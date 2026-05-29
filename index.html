@@ -9,171 +9,177 @@
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&family=Outfit:wght@200;300;400;500;600;700&display=swap" rel="stylesheet">
 <style>
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
-:root{
-  --bg:#faf9f6;
-  --bg2:#efeee9;
-  --ink:#141412;
-  --ink2:#484844;
-  --ink3:#a0a098;
-  --blue:#1e6b8a;
-  --dark:#111316;
-}
-html{scroll-behavior:smooth}
-body{font-family:'Outfit',sans-serif;background:var(--bg);color:var(--ink);-webkit-font-smoothing:antialiased;overflow-x:hidden}
+html{scroll-behavior:smooth;scroll-snap-type:y proximity}
+body{font-family:'Outfit',sans-serif;background:#0a0a0a;color:#fff;-webkit-font-smoothing:antialiased;overflow-x:hidden}
 a{color:inherit;text-decoration:none}
-
-.page{position:relative;z-index:1}
 
 nav{
   position:fixed;top:0;left:0;right:0;z-index:100;
-  padding:28px clamp(28px,5vw,56px);
+  padding:24px clamp(24px,5vw,56px);
   display:flex;align-items:center;justify-content:space-between;
-  transition:opacity .4s;
+  mix-blend-mode:difference;transition:opacity .4s;
 }
-.logo{font-size:1.05rem;font-weight:500;letter-spacing:.18em;text-transform:uppercase}
+.logo{font-size:1rem;font-weight:500;letter-spacing:.2em;text-transform:uppercase;color:#fff}
 
-/* ═══ SECTIONS ═══ */
-.s{
+/* ═══ FRAME ═══ */
+.frame{
   min-height:100vh;display:flex;flex-direction:column;
   align-items:center;justify-content:center;text-align:center;
-  padding:180px clamp(28px,7vw,100px) 140px;
   position:relative;overflow:hidden;
+  scroll-snap-align:start;
 }
 
-/* ═══ BG IMAGES ═══ */
-.s-water{background:url('bg-water-1.jpg') center/cover no-repeat}
-.s-water::before{content:'';position:absolute;inset:0;background:rgba(250,249,246,.88)}
-.s-water>*{position:relative;z-index:1}
+/* ═══ CINEMATIC IMAGE FRAMES ═══ */
+.frame-img{position:relative}
+.frame-img .bg{position:absolute;inset:0;background-size:cover;background-position:center}
+.frame-img .overlay{position:absolute;inset:0}
+.frame-img .content{position:relative;z-index:2;padding:clamp(80px,12vh,160px) clamp(24px,6vw,80px)}
 
-.s-light{background:url('bg-light-1.jpg') center/cover no-repeat}
-.s-light::before{content:'';position:absolute;inset:0;background:rgba(250,249,246,.85)}
-.s-light>*{position:relative;z-index:1}
+/* ═══ LETTERBOX ═══ */
+.letterbox::before,.letterbox::after{
+  content:'';position:absolute;left:0;right:0;height:clamp(40px,8vh,80px);
+  background:#0a0a0a;z-index:3;
+}
+.letterbox::before{top:0}
+.letterbox::after{bottom:0}
 
-.s-dark{background:url('bg-dark-1.jpg') center/cover no-repeat;color:#efeee9}
-.s-dark::before{content:'';position:absolute;inset:0;background:rgba(17,19,22,.82)}
-.s-dark>*{position:relative;z-index:1}
-.s-dark .mid{color:rgba(239,238,233,.5)}
-.s-dark .quiet{color:rgba(239,238,233,.3)}
+/* ═══ TEXT FRAMES ═══ */
+.frame-text{
+  background:#0a0a0a;
+  padding:clamp(100px,15vh,180px) clamp(28px,7vw,100px);
+}
+.frame-light{
+  background:#faf9f6;color:#141412;
+  padding:clamp(100px,15vh,180px) clamp(28px,7vw,100px);
+}
 
 /* ═══ TYPE ═══ */
 .mega{
   font-family:'Playfair Display',Georgia,serif;
-  font-size:clamp(3.2rem,9.5vw,7.5rem);font-weight:400;
+  font-size:clamp(3rem,9vw,7rem);font-weight:400;
   line-height:.92;letter-spacing:-.03em;max-width:960px;
+  text-shadow:0 2px 40px rgba(0,0,0,.3);
 }
-.mega em{font-style:italic;color:var(--blue)}
-.s-dark .mega em{color:#5db8de}
+.mega em{font-style:italic}
+.mega-light{text-shadow:none}
+.mega-light em{color:#1e6b8a}
 
 .big{
   font-family:'Playfair Display',Georgia,serif;
-  font-size:clamp(2rem,5vw,4rem);font-weight:400;
-  line-height:1.05;max-width:800px;
+  font-size:clamp(1.8rem,4.5vw,3.6rem);font-weight:400;
+  line-height:1.08;max-width:800px;
 }
-.big em{font-style:italic;color:var(--blue)}
-.s-dark .big em{color:#5db8de}
+.big em{font-style:italic}
+.frame-light .big em{color:#1e6b8a}
 
 .mid{
-  font-size:clamp(1.2rem,2.4vw,1.5rem);font-weight:300;
-  color:var(--ink2);line-height:1.9;max-width:500px;margin:0 auto;
+  font-size:clamp(1.15rem,2.2vw,1.4rem);font-weight:300;
+  color:rgba(255,255,255,.6);line-height:1.9;max-width:480px;margin:0 auto;
 }
-.quiet{
-  font-size:clamp(1.05rem,2vw,1.3rem);font-weight:300;
-  color:var(--ink3);line-height:1.8;max-width:460px;margin:0 auto;
-}
-.tag{font-size:.8rem;font-weight:400;letter-spacing:.2em;text-transform:uppercase;color:var(--ink3);margin-bottom:32px}
-.s-dark .tag{color:rgba(239,238,233,.25)}
+.frame-light .mid,.frame-text-warm .mid{color:rgba(20,20,18,.5)}
 
-.num{
+.quiet{
+  font-size:clamp(1rem,1.8vw,1.2rem);font-weight:300;
+  color:rgba(255,255,255,.35);line-height:1.8;max-width:440px;margin:0 auto;
+}
+.frame-light .quiet{color:rgba(20,20,18,.35)}
+
+.tag{font-size:.75rem;font-weight:400;letter-spacing:.25em;text-transform:uppercase;color:rgba(255,255,255,.3);margin-bottom:28px}
+
+/* ═══ HERO NUM ═══ */
+.hero-num{
   font-family:'Outfit',sans-serif;
-  font-size:clamp(7rem,22vw,18rem);font-weight:700;
-  line-height:.75;letter-spacing:-.06em;
-  background:linear-gradient(180deg,var(--ink) 15%,var(--ink3) 100%);
-  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
+  font-size:clamp(7rem,24vw,20rem);font-weight:700;
+  line-height:.7;letter-spacing:-.06em;
+  color:#fff;text-shadow:0 4px 60px rgba(0,0,0,.4);
 }
 
 /* ═══ PILLS ═══ */
-.pills{display:flex;gap:14px;flex-wrap:wrap;justify-content:center;margin-top:56px}
+.pills{display:flex;gap:12px;flex-wrap:wrap;justify-content:center;margin-top:48px}
 .pill{
-  padding:18px 36px;border:1px solid var(--bg2);border-radius:100px;
+  padding:16px 32px;border:1px solid rgba(255,255,255,.15);border-radius:100px;
   font-family:'Playfair Display',Georgia,serif;
-  font-size:clamp(1.05rem,1.8vw,1.3rem);font-style:italic;
-  color:var(--ink2);cursor:default;
+  font-size:clamp(1rem,1.6vw,1.2rem);font-style:italic;
+  color:rgba(255,255,255,.6);
+  backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);
+  background:rgba(255,255,255,.05);
   animation:pf 6s ease-in-out infinite;
 }
 .pill:nth-child(2){animation-delay:-1.5s}
 .pill:nth-child(3){animation-delay:-3s}
 .pill:nth-child(4){animation-delay:-4.5s}
-@keyframes pf{0%,100%{transform:translateY(0)}50%{transform:translateY(-5px)}}
-
-/* ═══ MARQUEE ═══ */
-.marquee{overflow:hidden;padding:52px 0}
-.marquee-dark{background:var(--dark);padding:56px 0}
-.marquee-track{display:flex;gap:56px;animation:sm 30s linear infinite;white-space:nowrap}
-.mw{
-  font-family:'Playfair Display',Georgia,serif;
-  font-size:clamp(2.8rem,7vw,5.5rem);font-weight:400;font-style:italic;
-  color:var(--bg2);flex-shrink:0;user-select:none;
-}
-.marquee-dark .mw{color:rgba(255,255,255,.04)}
-@keyframes sm{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+@keyframes pf{0%,100%{transform:translateY(0)}50%{transform:translateY(-4px)}}
 
 /* ═══ STATS ═══ */
-.stats-row{display:flex;gap:clamp(32px,6vw,72px);justify-content:center;flex-wrap:wrap;margin-top:52px}
+.stats{display:flex;gap:clamp(32px,6vw,80px);justify-content:center;flex-wrap:wrap;margin-top:52px}
 .st{text-align:center}
-.st-n{font-family:'Outfit',sans-serif;font-size:clamp(1.8rem,4vw,2.8rem);font-weight:600;display:block;line-height:1;color:var(--blue)}
-.s-dark .st-n{color:#5db8de}
-.st-l{font-size:clamp(.85rem,1.2vw,1rem);color:var(--ink3);margin-top:8px;font-weight:300}
-.s-dark .st-l{color:rgba(239,238,233,.25)}
+.st-n{font-family:'Outfit',sans-serif;font-size:clamp(1.8rem,4vw,2.8rem);font-weight:600;display:block;line-height:1}
+.st-l{font-size:clamp(.8rem,1.1vw,.95rem);color:rgba(255,255,255,.3);margin-top:8px;font-weight:300}
+.frame-light .st-n{color:#1e6b8a}
+.frame-light .st-l{color:rgba(20,20,18,.35)}
 
-/* ═══ FACT STRIP ═══ */
-.facts{display:flex;gap:clamp(24px,4vw,56px);justify-content:center;flex-wrap:wrap;margin-top:56px}
-.fact{text-align:center;max-width:200px}
-.fact-n{font-family:'Outfit',sans-serif;font-size:clamp(2.4rem,5vw,3.6rem);font-weight:700;display:block;line-height:1;margin-bottom:10px}
-.s-dark .fact-n{color:#efeee9}
-.fact-d{font-size:clamp(.9rem,1.2vw,1.05rem);color:var(--ink3);font-weight:300;line-height:1.5}
-.s-dark .fact-d{color:rgba(239,238,233,.3)}
+/* ═══ FACTS ═══ */
+.facts{display:flex;gap:clamp(24px,4vw,56px);justify-content:center;flex-wrap:wrap;margin-top:52px}
+.fact{text-align:center;max-width:180px}
+.fact-n{font-family:'Outfit',sans-serif;font-size:clamp(2.2rem,5vw,3.4rem);font-weight:700;display:block;line-height:1;margin-bottom:8px}
+.fact-d{font-size:clamp(.85rem,1.1vw,1rem);color:rgba(255,255,255,.3);font-weight:300;line-height:1.5}
 
-/* ═══ WORD-BY-WORD REVEAL ═══ */
-.words{display:flex;flex-wrap:wrap;justify-content:center;gap:0 .3em}
-.words .w{
-  opacity:0;transform:translateY(12px);
-  transition:opacity .6s cubic-bezier(.16,1,.3,1),transform .6s cubic-bezier(.16,1,.3,1);
+/* ═══ MARQUEE ═══ */
+.marquee{overflow:hidden;padding:44px 0;background:#0a0a0a}
+.marquee-track{display:flex;gap:48px;animation:sm 28s linear infinite;white-space:nowrap}
+.mw{
+  font-family:'Playfair Display',Georgia,serif;
+  font-size:clamp(2.4rem,6vw,4.5rem);font-weight:400;font-style:italic;
+  color:rgba(255,255,255,.04);flex-shrink:0;user-select:none;
 }
-.words.v .w{opacity:1;transform:translateY(0)}
+@keyframes sm{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
 
-/* ═══ STANDARD REVEALS ═══ */
+/* ═══ WORDS ═══ */
+.words{display:flex;flex-wrap:wrap;justify-content:center;gap:0 .3em}
+.words .w{opacity:0;transform:translateY(14px) scale(.97);transition:opacity .7s cubic-bezier(.16,1,.3,1),transform .7s cubic-bezier(.16,1,.3,1)}
+.words.v .w{opacity:1;transform:translateY(0) scale(1)}
+
+/* ═══ REVEAL ═══ */
 .rv{opacity:0;transform:translateY(20px);transition:opacity 1s cubic-bezier(.16,1,.3,1),transform 1s cubic-bezier(.16,1,.3,1)}
 .rv.v{opacity:1;transform:translateY(0)}
-.d1{transition-delay:.15s}.d2{transition-delay:.3s}.d3{transition-delay:.45s}
+.d1{transition-delay:.2s}.d2{transition-delay:.4s}.d3{transition-delay:.6s}
+
+/* ═══ PARALLAX ═══ */
+.parallax-bg{transition:transform .1s linear;will-change:transform}
 
 .invite{
   font-size:clamp(1.1rem,2vw,1.4rem);font-weight:400;
-  color:var(--ink);border-bottom:1px solid var(--bg2);
+  color:rgba(20,20,18,.8);border-bottom:1px solid rgba(20,20,18,.15);
   padding-bottom:4px;transition:border-color .3s;
 }
-.invite:hover{border-color:var(--ink)}
+.invite:hover{border-color:rgba(20,20,18,.6)}
 
-footer{padding:80px 32px;text-align:center}
-.ft-legal{font-size:.78rem;color:var(--ink3);line-height:2.2;max-width:560px;margin:0 auto 16px;font-weight:300}
-.ft-copy{font-size:.78rem;color:var(--ink3);font-weight:300}
+footer{padding:64px 32px;text-align:center;background:#0a0a0a}
+.ft-legal{font-size:.72rem;color:rgba(255,255,255,.2);line-height:2.2;max-width:560px;margin:0 auto 14px;font-weight:300}
+.ft-copy{font-size:.72rem;color:rgba(255,255,255,.2);font-weight:300}
 
-@media(max-width:480px){nav{padding:20px}.s{padding:140px 24px 110px}}
+@media(max-width:480px){
+  nav{padding:16px 20px}
+  .frame-text,.frame-light{padding:100px 24px}
+}
 </style>
 </head>
 <body>
 
-<div class="page">
-
 <nav><span class="logo">Prism</span></nav>
 
-<!-- 1 — SOMETHING IS SHIFTING -->
-<section class="s s-water" style="padding-top:220px">
-  <div class="tag rv">Quantitative AI Market Observer</div>
-  <h1 class="mega words" data-word>Something is <em>shifting.</em></h1>
-  <p class="mid rv d2" style="margin-top:48px">You feel it. The tools are changing.<br>The money is moving differently.<br>The old way doesn't make sense anymore.</p>
-</section>
+<!-- ═══ SCENE 1: THE OPENING — ocean golden hour ═══ -->
+<div class="frame frame-img letterbox">
+  <div class="bg parallax-bg" style="background-image:url('cinema-ocean.jpg')"></div>
+  <div class="overlay" style="background:linear-gradient(180deg,rgba(0,0,0,.3) 0%,rgba(0,0,0,.15) 40%,rgba(0,0,0,.5) 100%)"></div>
+  <div class="content" style="display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:100vh;text-align:center">
+    <div class="tag rv">Quantitative AI Market Observer</div>
+    <h1 class="mega words" data-word>Something is <em>shifting.</em></h1>
+    <p class="mid rv d2" style="margin-top:44px">You feel it. The tools are changing.<br>The money is moving differently.</p>
+  </div>
+</div>
 
-<!-- MARQUEE -->
+<!-- ═══ MARQUEE ═══ -->
 <div class="marquee">
   <div class="marquee-track">
     <span class="mw">abundance</span><span class="mw">freedom</span><span class="mw">exponential</span>
@@ -183,81 +189,97 @@ footer{padding:80px 32px;text-align:center}
   </div>
 </div>
 
-<!-- 2 — $7.5T -->
-<section class="s">
-  <div class="num rv" id="counter">$7.5</div>
-  <p class="mid rv d1" style="margin-top:36px">trillion flows through global markets<br>every single day.</p>
-  <p class="quiet rv d2" style="margin-top:28px">This isn't a secret.<br>It's just a number most people<br>never stop to feel.</p>
-</section>
-
-<!-- 3 — FEELING -->
-<section class="s s-light">
-  <h2 class="mega words" data-word>Most people trade on <em>feeling.</em></h2>
-  <div class="pills rv d1">
-    <div class="pill">Fear sells the bottom</div>
-    <div class="pill">Hope buys the top</div>
-    <div class="pill">Panic creates the crash</div>
-    <div class="pill">Opinion moves the herd</div>
+<!-- ═══ SCENE 2: $7.5T — city lights ═══ -->
+<div class="frame frame-img">
+  <div class="bg parallax-bg" style="background-image:url('cinema-city.jpg')"></div>
+  <div class="overlay" style="background:radial-gradient(ellipse at 50% 50%,rgba(0,0,0,.4),rgba(0,0,0,.7))"></div>
+  <div class="content" style="display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:100vh;text-align:center">
+    <div class="hero-num rv" id="counter">$7.5</div>
+    <p class="mid rv d1" style="margin-top:32px">trillion flows through global markets<br>every single day.</p>
+    <p class="quiet rv d2" style="margin-top:24px">This isn't a secret. It's just a number<br>most people never stop to feel.</p>
   </div>
-</section>
+</div>
 
-<!-- 4 — OPPORTUNITY -->
-<section class="s">
-  <h2 class="mega words" data-word>Every emotional dollar is someone else's <em>opportunity.</em></h2>
-</section>
+<!-- ═══ SCENE 3: FEELING — wave crash ═══ -->
+<div class="frame frame-img letterbox">
+  <div class="bg parallax-bg" style="background-image:url('cinema-wave.jpg')"></div>
+  <div class="overlay" style="background:linear-gradient(180deg,rgba(0,0,0,.4),rgba(0,0,0,.55))"></div>
+  <div class="content" style="display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:100vh;text-align:center">
+    <h2 class="mega words" data-word>Most people trade on <em>feeling.</em></h2>
+    <div class="pills rv d1">
+      <div class="pill">Fear sells the bottom</div>
+      <div class="pill">Hope buys the top</div>
+      <div class="pill">Panic creates the crash</div>
+      <div class="pill">Opinion moves the herd</div>
+    </div>
+  </div>
+</div>
 
-<!-- 5 — YOU ALREADY KNOW — DARK -->
-<section class="s s-dark">
-  <h2 class="mega words" data-word>You already <em>know this.</em></h2>
-  <p class="mid rv d1" style="margin-top:48px">You know the game changed.<br>You know AI is smarter than your advisor.<br>You know you're overpaying for opinions.</p>
+<!-- ═══ SCENE 4: OPPORTUNITY — dark text ═══ -->
+<div class="frame frame-text" style="min-height:100vh;display:flex;align-items:center;justify-content:center">
+  <h2 class="mega words" data-word style="text-shadow:none">Every emotional dollar is someone else's <em>opportunity.</em></h2>
+</div>
+
+<!-- ═══ SCENE 5: YOU ALREADY KNOW — dark ═══ -->
+<div class="frame frame-text" style="min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center">
+  <h2 class="mega words" data-word style="text-shadow:none">You already <em>know this.</em></h2>
+  <p class="mid rv d1" style="margin-top:48px;color:rgba(255,255,255,.45)">You know the game changed.<br>You know AI is smarter than your advisor.<br>You know you're overpaying for opinions.</p>
   <div class="facts rv d2">
     <div class="fact"><span class="fact-n">86%</span><span class="fact-d">of hedge funds use AI internally</span></div>
     <div class="fact"><span class="fact-n">64%</span><span class="fact-d">of returns eaten by fees</span></div>
-    <div class="fact"><span class="fact-n">46%</span><span class="fact-d">of HNW investors switching managers</span></div>
+    <div class="fact"><span class="fact-n">46%</span><span class="fact-d">switching wealth managers</span></div>
   </div>
   <p class="quiet rv d3" style="margin-top:48px">You see the problem clearly.<br>You just haven't had access to the solution.</p>
-</section>
+</div>
 
-<!-- 6 — MACHINES WON -->
-<section class="s">
-  <h2 class="mega words" data-word>Machines already <em>won.</em></h2>
+<!-- ═══ SCENE 6: MACHINES WON — light ═══ -->
+<div class="frame frame-light" style="min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center">
+  <h2 class="mega mega-light words" data-word>Machines already <em>won.</em></h2>
   <p class="mid rv d1" style="margin-top:48px">Medicine. Chess. Language. Driving.<br>The only field they haven't taken<br>is the biggest one.</p>
-</section>
+</div>
 
-<!-- 7 — 90% -->
-<section class="s s-light">
-  <h2 class="mega words" data-word>90% of traders <em>lose.</em></h2>
-  <p class="mid rv d1" style="margin-top:44px">That money doesn't vanish.<br>It flows to whoever's<br>on the other side of the trade.</p>
-</section>
+<!-- ═══ SCENE 7: 90% — dark ═══ -->
+<div class="frame frame-text" style="min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center">
+  <h2 class="mega words" data-word style="text-shadow:none">90% of traders <em>lose.</em></h2>
+  <p class="mid rv d1" style="margin-top:44px;color:rgba(255,255,255,.45)">That money doesn't vanish.<br>It flows to whoever's on the other side.</p>
+</div>
 
-<!-- 8 — THE WATER -->
-<section class="s s-water">
-  <h2 class="mega words" data-word>The water moves the way <em>it</em> wants.</h2>
-  <p class="mid rv d1" style="margin-top:44px">You can't control it.<br>You can't predict it.<br>You can only learn to read it.</p>
-</section>
-
-<!-- 9 — EVERY OCEAN — DARK -->
-<section class="s s-dark">
-  <h2 class="mega words" data-word>Something watches <em>every ocean</em> at once.</h2>
-  <div class="stats-row rv d1">
-    <div class="st"><span class="st-n">2.29M</span><span class="st-l">patterns nightly</span></div>
-    <div class="st"><span class="st-n">3,792</span><span class="st-l">instruments</span></div>
-    <div class="st"><span class="st-n">11</span><span class="st-l">engines</span></div>
+<!-- ═══ SCENE 8: THE WATER — underwater ═══ -->
+<div class="frame frame-img letterbox">
+  <div class="bg parallax-bg" style="background-image:url('cinema-below.jpg')"></div>
+  <div class="overlay" style="background:linear-gradient(180deg,rgba(0,0,0,.35),rgba(0,0,0,.25),rgba(0,0,0,.5))"></div>
+  <div class="content" style="display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:100vh;text-align:center">
+    <h2 class="mega words" data-word>The water moves the way <em>it</em> wants.</h2>
+    <p class="mid rv d1" style="margin-top:44px">You can't control it. You can't predict it.<br>You can only learn to read it.</p>
   </div>
-</section>
+</div>
 
-<!-- 10 — THE PANIC -->
-<section class="s">
+<!-- ═══ SCENE 9: EVERY OCEAN — dark with data feel ═══ -->
+<div class="frame frame-img">
+  <div class="bg parallax-bg" style="background-image:url('bg-dark-1.jpg')"></div>
+  <div class="overlay" style="background:rgba(10,10,10,.65)"></div>
+  <div class="content" style="display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:100vh;text-align:center">
+    <h2 class="mega words" data-word>Something watches <em>every ocean</em> at once.</h2>
+    <div class="stats rv d1">
+      <div class="st"><span class="st-n" style="color:#5db8de">2.29M</span><span class="st-l">patterns nightly</span></div>
+      <div class="st"><span class="st-n" style="color:#5db8de">3,792</span><span class="st-l">instruments</span></div>
+      <div class="st"><span class="st-n" style="color:#5db8de">11</span><span class="st-l">engines</span></div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ SCENE 10: PANIC — light ═══ -->
+<div class="frame frame-light" style="min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center">
   <h2 class="big words" data-word>When everyone panicked, the water kept <em>flowing.</em></h2>
-  <div class="stats-row rv d1" style="margin-top:52px">
-    <div class="st"><span class="st-n">+2.8%</span><span class="st-l">COVID crash</span></div>
-    <div class="st"><span class="st-n">+7.3%</span><span class="st-l">2022 bear market</span></div>
+  <div class="stats rv d1" style="margin-top:52px">
+    <div class="st"><span class="st-n">+2.8%</span><span class="st-l" style="color:rgba(20,20,18,.3)">COVID crash</span></div>
+    <div class="st"><span class="st-n">+7.3%</span><span class="st-l" style="color:rgba(20,20,18,.3)">2022 bear market</span></div>
   </div>
-  <p class="quiet rv d2" style="margin-top:52px">Yeah, we know how this sounds.<br>158 strategies tested. 40+ killed and published.<br>The graveyard is open to anyone who asks.</p>
-</section>
+  <p class="quiet rv d2" style="margin-top:52px;color:rgba(20,20,18,.35)">Yeah, we know how this sounds.<br>158 strategies tested. 40+ killed and published.<br>The graveyard is open to anyone who asks.</p>
+</div>
 
-<!-- MARQUEE 2 — DARK -->
-<div class="marquee-dark">
+<!-- ═══ MARQUEE 2 ═══ -->
+<div class="marquee">
   <div class="marquee-track" style="animation-duration:22s;animation-direction:reverse">
     <span class="mw">zero emotion</span><span class="mw">zero overhead</span><span class="mw">zero noise</span>
     <span class="mw">zero emotion</span><span class="mw">zero overhead</span><span class="mw">zero noise</span>
@@ -266,19 +288,21 @@ footer{padding:80px 32px;text-align:center}
   </div>
 </div>
 
-<!-- 11 — THE TRUTH -->
-<section class="s s-light">
-  <h2 class="mega words" data-word>The abundance was always <em>there.</em></h2>
-  <p class="mid rv d1" style="margin-top:48px">Some people see it. Most don't.<br>That's not a problem to solve.</p>
-</section>
+<!-- ═══ SCENE 11: THE TRUTH — ocean reprise ═══ -->
+<div class="frame frame-img">
+  <div class="bg parallax-bg" style="background-image:url('cinema-ocean.jpg');background-position:center bottom"></div>
+  <div class="overlay" style="background:linear-gradient(180deg,rgba(0,0,0,.5),rgba(0,0,0,.3))"></div>
+  <div class="content" style="display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:100vh;text-align:center">
+    <h2 class="mega words" data-word>The abundance was always <em>there.</em></h2>
+    <p class="mid rv d1" style="margin-top:48px">Some people see it. Most don't.<br>That's not a problem to solve.</p>
+  </div>
+</div>
 
-<!-- 12 — THE EXHALE -->
-<section class="s" style="min-height:80vh">
-  <h2 class="big words" data-word>The thing you've been sensing <em>already exists.</em></h2>
-  <p class="quiet rv d1" style="margin-top:44px">No management fee. AI reads the water.<br>Glass-box transparency. Founder's money inside.<br>You can see everything.</p>
+<!-- ═══ SCENE 12: THE EXHALE — light ═══ -->
+<div class="frame frame-light" style="min-height:80vh;display:flex;flex-direction:column;align-items:center;justify-content:center">
+  <h2 class="big words" data-word style="color:#141412">The thing you've been sensing <em>already exists.</em></h2>
+  <p class="quiet rv d1" style="margin-top:44px;color:rgba(20,20,18,.4)">No management fee. AI reads the water.<br>Glass-box transparency. Founder's money inside.<br>You can see everything.</p>
   <a href="mailto:info@prism.fund" class="invite rv d2" style="margin-top:60px">info@prism.fund</a>
-</section>
-
 </div>
 
 <footer>
@@ -287,54 +311,38 @@ footer{padding:80px 32px;text-align:center}
 </footer>
 
 <script>
-// standard reveals
-const ob=new IntersectionObserver(e=>{e.forEach(x=>{if(x.isIntersecting)x.target.classList.add('v')})},{threshold:.08,rootMargin:'0px 0px -40px 0px'});
+// reveals
+const ob=new IntersectionObserver(e=>{e.forEach(x=>{if(x.isIntersecting)x.target.classList.add('v')})},{threshold:.1,rootMargin:'0px 0px -40px 0px'});
 document.querySelectorAll('.rv').forEach(el=>ob.observe(el));
 
-// word-by-word reveals
+// word-by-word
 document.querySelectorAll('[data-word]').forEach(el=>{
-  const html=el.innerHTML;
-  // split by spaces but preserve HTML tags
-  const frag=document.createElement('div');
-  frag.innerHTML=html;
-  const words=[];
-  function walk(node){
-    if(node.nodeType===3){
-      node.textContent.split(/(\s+)/).forEach(part=>{
-        if(part.trim())words.push({text:part,tag:null});
-        else if(part)words.push({text:part,space:true});
-      });
-    }else if(node.nodeType===1){
-      if(node.tagName==='BR'){words.push({br:true});return}
-      const tag=node.tagName.toLowerCase();
-      const children=[];
-      node.childNodes.forEach(c=>walk(c));
-    }
-  }
-  // simpler approach: wrap each word
   let i=0;
-  const newHtml=html.replace(/(<[^>]+>)|(\S+)/g,(match,tag,word)=>{
+  el.innerHTML=el.innerHTML.replace(/(<[^>]+>)|(\S+)/g,(m,tag,word)=>{
     if(tag)return tag;
-    if(word){
-      const delay=i*.08;
-      i++;
-      return `<span class="w" style="transition-delay:${delay}s">${word}</span>`;
-    }
-    return match;
+    return `<span class="w" style="transition-delay:${i++*.09}s">${word}</span>`;
   });
-  el.innerHTML=newHtml;
-  el.classList.remove('rv');
-  new IntersectionObserver(e=>{
-    if(e[0].isIntersecting)el.classList.add('v');
-  },{threshold:.2}).observe(el);
+  new IntersectionObserver(e=>{if(e[0].isIntersecting)el.classList.add('v')},{threshold:.2}).observe(el);
 });
 
 // counter
 (function(){const el=document.getElementById('counter');let d=false;new IntersectionObserver(e=>{if(e[0].isIntersecting&&!d){d=true;const end=7.5,dur=2400,t0=performance.now();(function t(now){const p=Math.min((now-t0)/dur,1);el.textContent='$'+(p*(2-p)*end).toFixed(1);if(p<1)requestAnimationFrame(t)})(t0)}},{threshold:.5}).observe(el)})();
 
-// nav fade
+// parallax
+const pxEls=document.querySelectorAll('.parallax-bg');
+window.addEventListener('scroll',()=>{
+  const y=window.scrollY;
+  pxEls.forEach(el=>{
+    const rect=el.parentElement.getBoundingClientRect();
+    const center=rect.top+rect.height/2;
+    const offset=(center-window.innerHeight/2)*.15;
+    el.style.transform=`translateY(${offset}px) scale(1.1)`;
+  });
+},{passive:true});
+
+// nav
 const nav=document.querySelector('nav');
-window.addEventListener('scroll',()=>{nav.style.opacity=window.scrollY>300?'0':'1'},{passive:true});
+window.addEventListener('scroll',()=>{nav.style.opacity=window.scrollY>400?'0':'1'},{passive:true});
 </script>
 </body>
 </html>
