@@ -34,8 +34,7 @@ a{color:inherit;text-decoration:none}
 
 /* ═══ NOISE ═══ */
 body::before{
-  content:'';position:fixed;inset:0;z-index:9999;pointer-events:none;
-  opacity:.03;
+  content:'';position:fixed;inset:0;z-index:9999;pointer-events:none;opacity:.03;
   background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
   background-repeat:repeat;background-size:256px;
 }
@@ -43,272 +42,196 @@ body::before{
 /* ═══ NAV ═══ */
 nav{
   position:fixed;top:0;left:0;right:0;z-index:100;
-  padding:0 32px;height:56px;
+  padding:0 32px;height:52px;
   display:flex;align-items:center;justify-content:space-between;
-  background:rgba(15,17,23,0.85);
+  background:rgba(15,17,23,0.88);
   backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);
   border-bottom:1px solid rgba(255,255,255,0.04);
+  transition:transform .3s;
 }
 .nav-logo{
   font-family:'JetBrains Mono',monospace;
-  font-size:.75rem;font-weight:500;
+  font-size:.72rem;font-weight:500;
   letter-spacing:.18em;text-transform:uppercase;
-  color:var(--ink);
 }
 .nav-links{display:flex;align-items:center;gap:24px}
-.nav-links a{
-  font-size:.72rem;color:var(--ink3);
-  font-weight:400;letter-spacing:.03em;
-  transition:color .2s;
-}
+.nav-links a{font-size:.68rem;color:var(--ink3);font-weight:400;letter-spacing:.03em;transition:color .2s}
 .nav-links a:hover{color:var(--ink)}
 .nav-cta{
-  padding:8px 20px;
-  border:1px solid rgba(61,142,196,0.3);
-  color:var(--ocean-light)!important;
-  font-weight:500!important;
-  transition:all .3s!important;
+  padding:7px 18px;border:1px solid rgba(61,142,196,0.3);
+  color:var(--ocean-light)!important;font-weight:500!important;transition:all .3s!important;
 }
-.nav-cta:hover{
-  background:rgba(61,142,196,0.08);
-  border-color:var(--ocean-light);
-}
+.nav-cta:hover{background:rgba(61,142,196,0.08);border-color:var(--ocean-light)}
 
 /* ═══ TICKER ═══ */
 .ticker{
-  position:fixed;top:56px;left:0;right:0;z-index:99;
-  height:32px;
-  background:var(--bg2);
+  position:fixed;top:52px;left:0;right:0;z-index:99;
+  height:30px;background:var(--bg2);
   border-bottom:1px solid rgba(255,255,255,0.03);
-  overflow:hidden;
-  display:flex;align-items:center;
+  overflow:hidden;display:flex;align-items:center;
 }
 .ticker-track{
   display:flex;gap:48px;
-  animation:scroll-ticker 40s linear infinite;
+  animation:scroll-ticker 45s linear infinite;
   white-space:nowrap;
 }
 .ticker-item{
-  font-family:'JetBrains Mono',monospace;
-  font-size:.6rem;
-  color:var(--ink3);
-  display:flex;align-items:center;gap:8px;
-  flex-shrink:0;
+  font-family:'JetBrains Mono',monospace;font-size:.58rem;
+  color:var(--ink3);display:flex;align-items:center;gap:8px;flex-shrink:0;
 }
 .ticker-item .name{color:var(--ink2)}
 .ticker-item .up{color:var(--green)}
 .ticker-item .down{color:var(--red)}
-@keyframes scroll-ticker{
-  0%{transform:translateX(0)}
-  100%{transform:translateX(-50%)}
-}
-
-/* ═══ PILLAR BAR ═══ */
-.pillars{
-  background:var(--bg3);
-  border-top:1px solid rgba(255,255,255,0.04);
-  border-bottom:1px solid rgba(255,255,255,0.04);
-  padding:0;
-  display:grid;
-  grid-template-columns:repeat(4,1fr);
-}
-@media(max-width:640px){.pillars{grid-template-columns:repeat(2,1fr)}}
-.pillar{
-  padding:20px 16px;
-  text-align:center;
-  border-right:1px solid rgba(255,255,255,0.03);
-}
-.pillar:last-child{border-right:none}
-.pillar-icon{
-  font-size:.9rem;
-  margin-bottom:6px;
-  opacity:.6;
-}
-.pillar-title{
-  font-family:'JetBrains Mono',monospace;
-  font-size:.62rem;
-  font-weight:500;
-  letter-spacing:.12em;
-  text-transform:uppercase;
-  color:var(--ink2);
-  margin-bottom:2px;
-}
-.pillar-sub{
-  font-size:.58rem;
-  color:var(--ink3);
-}
+@keyframes scroll-ticker{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
 
 /* ═══ SECTIONS ═══ */
 .scene{
-  min-height:100vh;
-  display:flex;flex-direction:column;
+  min-height:100vh;display:flex;flex-direction:column;
   align-items:center;justify-content:center;
-  text-align:center;
-  position:relative;
-  padding:100px 24px 80px;
-  overflow:hidden;
+  text-align:center;position:relative;
+  padding:100px 24px 80px;overflow:hidden;
 }
-.scene-half{
-  min-height:auto;
-  padding:80px 24px;
-}
+.scene-compact{min-height:auto;padding:80px 24px}
 
 /* ═══ TYPOGRAPHY ═══ */
 .headline{
   font-family:'Cormorant Garamond',serif;
   font-size:clamp(2.4rem,6.5vw,5rem);
-  font-weight:300;
-  line-height:1.1;
-  letter-spacing:-.02em;
-  max-width:900px;
+  font-weight:300;line-height:1.08;letter-spacing:-.02em;max-width:900px;
 }
 .headline em{font-style:italic;font-weight:400;color:var(--ocean-light)}
+.headline-sm{font-size:clamp(1.5rem,3.2vw,2.4rem)}
+.headline-md{font-size:clamp(1.7rem,3.8vw,2.8rem)}
 
 .subline{
-  font-size:clamp(.95rem,1.8vw,1.15rem);
-  font-weight:300;
-  color:var(--ink2);
-  line-height:1.9;
-  max-width:560px;
-  margin:0 auto;
+  font-size:clamp(.95rem,1.8vw,1.12rem);font-weight:300;
+  color:var(--ink2);line-height:1.9;max-width:560px;margin:0 auto;
 }
 
 .label{
   font-family:'JetBrains Mono',monospace;
-  font-size:.62rem;font-weight:400;
-  letter-spacing:.25em;text-transform:uppercase;
-  color:var(--ink3);margin-bottom:24px;
+  font-size:.6rem;font-weight:400;letter-spacing:.25em;
+  text-transform:uppercase;color:var(--ink3);margin-bottom:24px;
+}
+
+.question{
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(1.3rem,2.8vw,2rem);
+  font-weight:300;font-style:italic;
+  color:var(--ink2);max-width:600px;
+  margin:0 auto;line-height:1.5;
 }
 
 /* ═══ REVEALS ═══ */
-.rv{
-  opacity:0;transform:translateY(32px);
-  transition:opacity 1s cubic-bezier(.16,1,.3,1),transform 1s cubic-bezier(.16,1,.3,1);
-}
+.rv{opacity:0;transform:translateY(28px);transition:opacity 1s cubic-bezier(.16,1,.3,1),transform 1s cubic-bezier(.16,1,.3,1)}
 .rv.v{opacity:1;transform:translateY(0)}
-.d1{transition-delay:.15s}.d2{transition-delay:.3s}
-.d3{transition-delay:.45s}.d4{transition-delay:.6s}
+.d1{transition-delay:.15s}.d2{transition-delay:.3s}.d3{transition-delay:.45s}.d4{transition-delay:.6s}
 
 /* ═══ HERO ═══ */
-.scene-ocean{
+.scene-hero{
   background:radial-gradient(ellipse 80% 60% at 50% 35%,rgba(26,74,110,0.15),transparent),var(--bg);
-  padding-top:140px;
+  padding-top:130px;
 }
 .big-number{
   font-family:'JetBrains Mono',monospace;
-  font-size:clamp(4rem,13vw,10rem);
-  font-weight:500;line-height:.9;letter-spacing:-.04em;
+  font-size:clamp(4rem,13vw,10rem);font-weight:500;
+  line-height:.9;letter-spacing:-.04em;
   background:linear-gradient(180deg,var(--ink) 20%,var(--ink3) 100%);
   -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
   margin-bottom:8px;
 }
 .big-unit{
   font-family:'JetBrains Mono',monospace;
-  font-size:clamp(.9rem,2vw,1.4rem);
-  font-weight:300;color:var(--ink3);
-  letter-spacing:.1em;text-transform:uppercase;
-  margin-bottom:40px;
+  font-size:clamp(.85rem,1.8vw,1.3rem);font-weight:300;
+  color:var(--ink3);letter-spacing:.1em;text-transform:uppercase;margin-bottom:40px;
 }
 
 /* ═══ EMOTION GRID ═══ */
 .emotion-grid{
-  display:grid;grid-template-columns:repeat(4,1fr);
-  gap:1px;max-width:600px;width:100%;margin:48px auto 0;
-  background:rgba(255,255,255,0.03);border-radius:8px;overflow:hidden;
+  display:grid;grid-template-columns:repeat(4,1fr);gap:1px;
+  max-width:580px;width:100%;margin:40px auto 0;
+  background:rgba(255,255,255,0.02);border-radius:6px;overflow:hidden;
 }
 @media(max-width:480px){.emotion-grid{grid-template-columns:repeat(2,1fr)}}
-.emotion-cell{padding:28px 16px;background:var(--bg2);text-align:center}
+.emotion-cell{padding:24px 14px;background:var(--bg2);text-align:center}
 .emotion-word{
   font-family:'Cormorant Garamond',serif;
-  font-size:clamp(1.1rem,2.2vw,1.5rem);
-  font-weight:400;font-style:italic;
-  color:var(--ink2);display:block;margin-bottom:4px;
+  font-size:clamp(1.1rem,2vw,1.4rem);font-weight:400;font-style:italic;
+  color:var(--ink2);display:block;margin-bottom:3px;
 }
-.emotion-pct{font-family:'JetBrains Mono',monospace;font-size:.62rem;color:var(--ink3)}
+.emotion-pct{font-family:'JetBrains Mono',monospace;font-size:.58rem;color:var(--ink3)}
 
-/* ═══ WAVES ═══ */
-.scene-waves{
-  background:radial-gradient(ellipse 70% 50% at 50% 60%,rgba(26,74,110,0.08),transparent),var(--bg);
+/* ═══ STAT ROW ═══ */
+.stat-row{display:flex;gap:48px;justify-content:center;flex-wrap:wrap;margin-top:48px}
+.stat-item{text-align:center}
+.stat-num{
+  font-family:'JetBrains Mono',monospace;
+  font-size:clamp(1.3rem,2.8vw,1.8rem);font-weight:500;color:var(--ink);display:block;
 }
+.stat-label{font-size:.62rem;color:var(--ink3);display:block;margin-top:4px}
 
 /* ═══ DIVIDERS ═══ */
-.divider{width:80px;height:1px;background:linear-gradient(90deg,transparent,var(--ink3),transparent);margin:0 auto}
+.divider{width:60px;height:1px;background:linear-gradient(90deg,transparent,var(--ink4),transparent);margin:0 auto}
 .divider-glow{
-  width:120px;height:1px;
+  width:100px;height:1px;
   background:linear-gradient(90deg,transparent,var(--ocean-light),transparent);
-  margin:0 auto;
-  box-shadow:0 0 20px var(--ocean-light),0 0 60px rgba(61,142,196,0.15);
+  margin:0 auto;box-shadow:0 0 20px var(--ocean-light),0 0 50px rgba(61,142,196,0.12);
 }
 
-/* ═══ EYES ═══ */
-.scene-eyes{
-  background:radial-gradient(ellipse 60% 40% at 50% 50%,rgba(61,142,196,0.06),transparent),var(--bg);
+/* ═══ COST BAR ═══ */
+.cost-compare{
+  display:grid;grid-template-columns:1fr auto 1fr;gap:24px;
+  max-width:600px;width:100%;margin:48px auto 0;align-items:center;
 }
-.radar-ring{
-  position:absolute;border-radius:50%;
-  border:1px solid rgba(61,142,196,0.06);
-  animation:radar-pulse 6s ease-out infinite;
+@media(max-width:480px){
+  .cost-compare{grid-template-columns:1fr;gap:16px}
+  .cost-vs{display:none}
 }
-.radar-ring:nth-child(1){width:300px;height:300px;animation-delay:0s}
-.radar-ring:nth-child(2){width:500px;height:500px;animation-delay:1.5s}
-.radar-ring:nth-child(3){width:700px;height:700px;animation-delay:3s}
-@keyframes radar-pulse{
-  0%{opacity:0;transform:scale(.8)}20%{opacity:1}100%{opacity:0;transform:scale(1.2)}
+.cost-box{
+  background:var(--bg2);border:1px solid rgba(255,255,255,0.03);
+  border-radius:6px;padding:28px 20px;text-align:center;
 }
-
-/* ═══ STATS ═══ */
-.scan-stats{
-  display:flex;gap:48px;justify-content:center;flex-wrap:wrap;margin-top:48px;
+.cost-title{
+  font-family:'JetBrains Mono',monospace;font-size:.58rem;
+  letter-spacing:.15em;text-transform:uppercase;color:var(--ink3);margin-bottom:10px;
 }
-.scan-stat{text-align:center}
-.scan-num{
+.cost-fee{
   font-family:'JetBrains Mono',monospace;
-  font-size:clamp(1.3rem,2.8vw,1.8rem);
-  font-weight:500;color:var(--ink);display:block;
+  font-size:clamp(1.8rem,4vw,2.6rem);font-weight:500;display:block;line-height:1;margin-bottom:6px;
 }
-.scan-label{font-size:.65rem;color:var(--ink3);display:block;margin-top:4px}
+.cost-detail{font-size:.7rem;color:var(--ink3);line-height:1.6}
+.cost-vs{
+  font-family:'Cormorant Garamond',serif;font-size:1.1rem;
+  font-style:italic;color:var(--ink3);
+}
 
-/* ═══ WATER LINES ═══ */
-.water-lines{max-width:640px;margin:0 auto}
-.water-line{
-  font-family:'Cormorant Garamond',serif;
-  font-size:clamp(1.05rem,2vw,1.35rem);
-  font-weight:300;color:var(--ink2);line-height:2;
-  padding:12px 0;border-bottom:1px solid rgba(255,255,255,0.03);
+/* ═══ GRID STATS ═══ */
+.grid-stats{
+  display:grid;grid-template-columns:repeat(4,1fr);gap:1px;
+  max-width:680px;width:100%;margin:48px auto 0;
+  background:rgba(255,255,255,0.02);border-radius:6px;overflow:hidden;
 }
-.water-line:last-child{border-bottom:none}
-.water-line strong{color:var(--ink);font-weight:500}
+@media(max-width:640px){.grid-stats{grid-template-columns:repeat(2,1fr)}}
+.grid-stat{background:var(--bg2);padding:24px 14px;text-align:center}
+.grid-stat-num{
+  font-family:'JetBrains Mono',monospace;
+  font-size:clamp(1.1rem,2.2vw,1.4rem);font-weight:500;
+  color:var(--ink);display:block;line-height:1;margin-bottom:5px;
+}
+.grid-stat-label{font-size:.58rem;color:var(--ink3)}
 
 /* ═══ MACHINE LIST ═══ */
-.machine-list{list-style:none;max-width:400px;margin:40px auto 0;text-align:left}
+.machine-list{list-style:none;max-width:360px;margin:36px auto 0;text-align:left}
 .machine-list li{
-  font-family:'JetBrains Mono',monospace;
-  font-size:clamp(.72rem,1.1vw,.84rem);
-  color:var(--ink3);padding:12px 0;
+  font-family:'JetBrains Mono',monospace;font-size:clamp(.7rem,1vw,.8rem);
+  color:var(--ink3);padding:11px 0;
   border-bottom:1px solid rgba(255,255,255,0.03);
-  display:flex;align-items:center;gap:12px;
+  display:flex;align-items:center;gap:10px;
 }
 .machine-list li::before{
   content:'';width:5px;height:5px;border-radius:50%;
-  background:var(--ocean-light);flex-shrink:0;
-  box-shadow:0 0 8px var(--ocean-light);
+  background:var(--ocean-light);flex-shrink:0;box-shadow:0 0 6px var(--ocean-light);
 }
-
-/* ═══ GRAVEYARD ═══ */
-.graveyard-stats{
-  display:grid;grid-template-columns:repeat(4,1fr);
-  gap:1px;max-width:700px;width:100%;
-  margin:48px auto 0;background:rgba(255,255,255,0.02);
-  border-radius:8px;overflow:hidden;
-}
-@media(max-width:640px){.graveyard-stats{grid-template-columns:repeat(2,1fr)}}
-.graveyard-stat{background:var(--bg2);padding:24px 16px;text-align:center}
-.graveyard-num{
-  font-family:'JetBrains Mono',monospace;
-  font-size:clamp(1.1rem,2.2vw,1.5rem);
-  font-weight:500;color:var(--ink);display:block;line-height:1;margin-bottom:6px;
-}
-.graveyard-label{font-size:.6rem;color:var(--ink3)}
 
 /* ═══ ZERO ═══ */
 .scene-zero{background:var(--bg);position:relative}
@@ -318,41 +241,34 @@ nav{
 }
 .zero-number{
   font-family:'JetBrains Mono',monospace;
-  font-size:clamp(9rem,28vw,20rem);
-  font-weight:500;line-height:.75;letter-spacing:-.06em;
+  font-size:clamp(8rem,26vw,18rem);font-weight:500;
+  line-height:.75;letter-spacing:-.06em;
   background:linear-gradient(180deg,var(--ink) 0%,var(--ink4) 100%);
   -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
   position:relative;
 }
 .zero-word{
   font-family:'Cormorant Garamond',serif;
-  font-size:clamp(1.3rem,2.8vw,2rem);
-  font-weight:300;font-style:italic;color:var(--ink2);
-  margin-top:8px;letter-spacing:.08em;
+  font-size:clamp(1.2rem,2.5vw,1.8rem);font-weight:300;
+  font-style:italic;color:var(--ink2);margin-top:8px;letter-spacing:.06em;
 }
-.zero-sub{
-  font-size:.85rem;color:var(--ink3);font-weight:300;
-  max-width:420px;margin:32px auto 0;line-height:1.9;
-}
+.zero-sub{font-size:.82rem;color:var(--ink3);font-weight:300;max-width:400px;margin:28px auto 0;line-height:1.9}
 
 /* ═══ TERMS ═══ */
 .terms-grid{
-  display:grid;grid-template-columns:repeat(4,1fr);
-  gap:1px;max-width:760px;width:100%;margin:0 auto;
-  background:rgba(255,255,255,0.02);border-radius:8px;overflow:hidden;
+  display:grid;grid-template-columns:repeat(4,1fr);gap:1px;
+  max-width:740px;width:100%;margin:0 auto;
+  background:rgba(255,255,255,0.02);border-radius:6px;overflow:hidden;
 }
 @media(max-width:640px){.terms-grid{grid-template-columns:repeat(2,1fr)}}
-.term-card{background:var(--bg2);padding:40px 20px;text-align:center}
+.term-card{background:var(--bg2);padding:36px 18px;text-align:center}
 .term-num{
   font-family:'JetBrains Mono',monospace;
-  font-size:clamp(2rem,4.5vw,3.2rem);
-  font-weight:500;color:var(--ink);display:block;line-height:1;margin-bottom:12px;
+  font-size:clamp(1.8rem,4vw,2.8rem);font-weight:500;
+  color:var(--ink);display:block;line-height:1;margin-bottom:10px;
 }
-.term-label{font-size:.78rem;color:var(--ink2);font-weight:300;line-height:1.7}
-.term-sub{
-  font-family:'JetBrains Mono',monospace;
-  font-size:.55rem;color:var(--ink3);margin-top:12px;letter-spacing:.05em;
-}
+.term-label{font-size:.75rem;color:var(--ink2);font-weight:300;line-height:1.7}
+.term-sub{font-family:'JetBrains Mono',monospace;font-size:.52rem;color:var(--ink3);margin-top:10px;letter-spacing:.04em}
 
 /* ═══ DOOR ═══ */
 .scene-door{
@@ -362,9 +278,8 @@ nav{
 .door-cta{
   display:inline-flex;align-items:center;gap:12px;
   padding:18px 44px;border:1px solid rgba(61,142,196,0.3);
-  color:var(--ink);font-family:'DM Sans',sans-serif;
-  font-size:.85rem;font-weight:400;letter-spacing:.05em;
-  margin-top:48px;transition:all .6s cubic-bezier(.16,1,.3,1);
+  color:var(--ink);font-size:.85rem;font-weight:400;letter-spacing:.05em;
+  margin-top:44px;transition:all .6s cubic-bezier(.16,1,.3,1);
   position:relative;overflow:hidden;
 }
 .door-cta::before{
@@ -381,10 +296,9 @@ nav{
 .door-cta .arrow{transition:transform .4s cubic-bezier(.16,1,.3,1);font-size:1rem}
 .door-cta:hover .arrow{transform:translateX(4px)}
 
-/* ═══ CAPACITY ═══ */
 .capacity{
-  margin-top:28px;font-family:'JetBrains Mono',monospace;
-  font-size:.6rem;letter-spacing:.2em;text-transform:uppercase;
+  margin-top:24px;font-family:'JetBrains Mono',monospace;
+  font-size:.58rem;letter-spacing:.2em;text-transform:uppercase;
   color:var(--ink3);display:flex;align-items:center;gap:10px;justify-content:center;
 }
 .capacity::before{
@@ -395,39 +309,24 @@ nav{
 @keyframes pulse{0%,100%{opacity:.4}50%{opacity:1}}
 
 /* ═══ FOOTER ═══ */
-footer{
-  padding:40px 24px;text-align:center;
-  border-top:1px solid rgba(255,255,255,0.03);
-}
-.ft-nav{
-  display:flex;gap:20px;justify-content:center;margin-bottom:20px;flex-wrap:wrap;
-}
-.ft-nav a{font-size:.65rem;color:var(--ink3);transition:color .2s}
+footer{padding:36px 24px;text-align:center;border-top:1px solid rgba(255,255,255,0.03)}
+.ft-nav{display:flex;gap:20px;justify-content:center;margin-bottom:18px;flex-wrap:wrap}
+.ft-nav a{font-size:.62rem;color:var(--ink3);transition:color .2s}
 .ft-nav a:hover{color:var(--ink)}
-.ft-legal{font-size:.55rem;color:var(--ink4);line-height:2;max-width:600px;margin:0 auto 12px}
-.ft-copy{font-size:.52rem;color:var(--ink4)}
+.ft-legal{font-size:.52rem;color:var(--ink4);line-height:2;max-width:580px;margin:0 auto 10px}
+.ft-copy{font-size:.5rem;color:var(--ink4)}
 
 /* ═══ PARTICLES ═══ */
-.particle{
-  position:fixed;width:2px;height:2px;border-radius:50%;
-  background:var(--ocean-light);opacity:0;pointer-events:none;z-index:1;
-}
-@keyframes drift{
-  0%{opacity:0;transform:translateY(0)}15%{opacity:.25}
-  85%{opacity:.25}100%{opacity:0;transform:translateY(-100vh)}
-}
+.particle{position:fixed;width:2px;height:2px;border-radius:50%;background:var(--ocean-light);opacity:0;pointer-events:none;z-index:1}
+@keyframes drift{0%{opacity:0;transform:translateY(0)}15%{opacity:.2}85%{opacity:.2}100%{opacity:0;transform:translateY(-100vh)}}
 
 /* ═══ RESPONSIVE ═══ */
 @media(max-width:480px){
   nav{padding:0 16px}
-  .nav-links{gap:14px}
   .nav-links a:not(.nav-cta){display:none}
   .scene{padding:80px 20px 60px}
-  .scan-stats{gap:20px}
-  .pillars{grid-template-columns:repeat(2,1fr)}
+  .stat-row{gap:20px}
 }
-
-/* ═══ SCROLLBAR ═══ */
 ::-webkit-scrollbar{width:3px}
 ::-webkit-scrollbar-track{background:var(--bg)}
 ::-webkit-scrollbar-thumb{background:var(--ink4);border-radius:3px}
@@ -439,7 +338,7 @@ footer{
 <nav>
   <span class="nav-logo">Prism</span>
   <div class="nav-links">
-    <a href="#how">How</a>
+    <a href="#system">How</a>
     <a href="#proof">Proof</a>
     <a href="#terms">Terms</a>
     <a href="mailto:info@prism.fund" class="nav-cta">Request Access</a>
@@ -448,67 +347,43 @@ footer{
 
 <!-- ═══ TICKER ═══ -->
 <div class="ticker">
-  <div class="ticker-track" id="ticker">
+  <div class="ticker-track">
     <span class="ticker-item"><span class="name">S&P 500</span> 5,932 <span class="up">+0.43%</span></span>
     <span class="ticker-item"><span class="name">NASDAQ</span> 19,148 <span class="up">+0.68%</span></span>
     <span class="ticker-item"><span class="name">BTC</span> $108,420 <span class="up">+2.1%</span></span>
-    <span class="ticker-item"><span class="name">EUR/USD</span> 1.1362 <span class="down">−0.12%</span></span>
+    <span class="ticker-item"><span class="name">EUR/USD</span> 1.1362 <span class="down">&minus;0.12%</span></span>
     <span class="ticker-item"><span class="name">Gold</span> $3,348 <span class="up">+0.34%</span></span>
-    <span class="ticker-item"><span class="name">VIX</span> 18.2 <span class="down">−3.1%</span></span>
+    <span class="ticker-item"><span class="name">VIX</span> 18.2 <span class="down">&minus;3.1%</span></span>
     <span class="ticker-item"><span class="name">10Y Yield</span> 4.54% <span class="up">+0.02</span></span>
-    <span class="ticker-item"><span class="name">Crude Oil</span> $61.53 <span class="down">−0.87%</span></span>
-    <!-- duplicate for seamless loop -->
+    <span class="ticker-item"><span class="name">Crude Oil</span> $61.53 <span class="down">&minus;0.87%</span></span>
     <span class="ticker-item"><span class="name">S&P 500</span> 5,932 <span class="up">+0.43%</span></span>
     <span class="ticker-item"><span class="name">NASDAQ</span> 19,148 <span class="up">+0.68%</span></span>
     <span class="ticker-item"><span class="name">BTC</span> $108,420 <span class="up">+2.1%</span></span>
-    <span class="ticker-item"><span class="name">EUR/USD</span> 1.1362 <span class="down">−0.12%</span></span>
+    <span class="ticker-item"><span class="name">EUR/USD</span> 1.1362 <span class="down">&minus;0.12%</span></span>
     <span class="ticker-item"><span class="name">Gold</span> $3,348 <span class="up">+0.34%</span></span>
-    <span class="ticker-item"><span class="name">VIX</span> 18.2 <span class="down">−3.1%</span></span>
+    <span class="ticker-item"><span class="name">VIX</span> 18.2 <span class="down">&minus;3.1%</span></span>
     <span class="ticker-item"><span class="name">10Y Yield</span> 4.54% <span class="up">+0.02</span></span>
-    <span class="ticker-item"><span class="name">Crude Oil</span> $61.53 <span class="down">−0.87%</span></span>
+    <span class="ticker-item"><span class="name">Crude Oil</span> $61.53 <span class="down">&minus;0.87%</span></span>
   </div>
 </div>
 
-<!-- ═══ PARTICLES ═══ -->
 <div id="particles"></div>
 
-<!-- ═══════════════════════════════════════════ -->
-<!-- HERO: THE OCEAN                            -->
-<!-- ═══════════════════════════════════════════ -->
-<section class="scene scene-ocean">
+<!-- ═══════════════════════════════════════════════════ -->
+<!-- 1. THE MONEY IS ALREADY THERE                      -->
+<!-- They believe: markets are massive, money is real   -->
+<!-- ═══════════════════════════════════════════════════ -->
+<section class="scene scene-hero">
   <div class="label rv">Did you know</div>
   <div class="big-number rv d1" id="counter">$7.5</div>
-  <div class="big-unit rv d2">trillion &mdash; every single day</div>
-  <p class="subline rv d3">flows through global markets. Stocks, bonds, currencies, crypto, commodities. A river that never stops.</p>
+  <div class="big-unit rv d2">trillion flows through global markets every day</div>
+  <p class="subline rv d3">Stocks, bonds, currencies, crypto, commodities. Right now, as you read this, trillions are moving. A river that never stops.</p>
 </section>
 
-<!-- ═══ PILLAR BAR ═══ -->
-<div class="pillars">
-  <div class="pillar">
-    <div class="pillar-icon">◎</div>
-    <div class="pillar-title">11 Engines</div>
-    <div class="pillar-sub">Independent &amp; uncorrelated</div>
-  </div>
-  <div class="pillar">
-    <div class="pillar-icon">◈</div>
-    <div class="pillar-title">Zero Emotion</div>
-    <div class="pillar-sub">Math-only execution</div>
-  </div>
-  <div class="pillar">
-    <div class="pillar-icon">◉</div>
-    <div class="pillar-title">24/7 Autonomous</div>
-    <div class="pillar-sub">Runs while you live</div>
-  </div>
-  <div class="pillar">
-    <div class="pillar-icon">◇</div>
-    <div class="pillar-title">0% Management Fee</div>
-    <div class="pillar-sub">Pay only on profits</div>
-  </div>
-</div>
-
-<!-- ═══════════════════════════════════════════ -->
-<!-- THE EMOTION                                -->
-<!-- ═══════════════════════════════════════════ -->
+<!-- ═══════════════════════════════════════════════════ -->
+<!-- 2. MOST OF IT MOVES ON EMOTION                     -->
+<!-- They believe: people trade emotionally, it's dumb  -->
+<!-- ═══════════════════════════════════════════════════ -->
 <section class="scene">
   <div class="label rv">What moves most of it?</div>
   <h2 class="headline rv d1"><em>Emotion.</em></h2>
@@ -530,131 +405,145 @@ footer{
       <span class="emotion-pct">tends to move the herd</span>
     </div>
   </div>
-  <p class="subline rv d3" style="margin-top:40px">Every emotional dollar creates a wave.<br>What does every wave create?</p>
+  <p class="subline rv d3" style="margin-top:36px">Every emotional dollar creates a wave.<br>What does every wave create?</p>
 </section>
 
-<!-- ═══════════════════════════════════════════ -->
-<!-- THE WAVES                                  -->
-<!-- ═══════════════════════════════════════════ -->
-<section class="scene scene-waves">
-  <h2 class="headline rv">The waves are<br><em>already forming.</em></h2>
-  <p class="subline rv d1" style="margin-top:32px">You don't create them. You don't predict them. You don't fight them. They're already there &mdash; born from trillions of dollars of human emotion flowing through every market on earth, every second of every day.</p>
-  <div class="divider rv d2" style="margin-top:48px"></div>
-  <p class="subline rv d3" style="margin-top:32px;color:var(--ink3);font-size:.85rem">The money is already moving.<br>Some people have learned to read the water.</p>
-</section>
-
-<!-- ═══════════════════════════════════════════ -->
-<!-- THE EYES                                   -->
-<!-- ═══════════════════════════════════════════ -->
-<section class="scene scene-eyes" id="how">
-  <div class="radar-ring"></div>
-  <div class="radar-ring"></div>
-  <div class="radar-ring"></div>
-  <div class="label rv" style="position:relative;z-index:1">What if something already existed that could</div>
-  <h2 class="headline rv d1" style="position:relative;z-index:1">read <em>every sea</em><br>at once.</h2>
-  <p class="subline rv d2" style="margin-top:32px;position:relative;z-index:1">Not one market. Not one thesis. Not one model. A system watching every ocean &mdash; reading the water before the wave breaks.</p>
-  <div class="scan-stats rv d3" style="position:relative;z-index:1">
-    <div class="scan-stat">
-      <span class="scan-num">2.29M</span>
-      <span class="scan-label">patterns scanned nightly</span>
-    </div>
-    <div class="scan-stat">
-      <span class="scan-num">3,792</span>
-      <span class="scan-label">instruments watched</span>
-    </div>
-    <div class="scan-stat">
-      <span class="scan-num">11</span>
-      <span class="scan-label">independent engines</span>
-    </div>
-  </div>
-</section>
-
-<!-- ═══════════════════════════════════════════ -->
-<!-- THE WATER                                  -->
-<!-- ═══════════════════════════════════════════ -->
+<!-- ═══════════════════════════════════════════════════ -->
+<!-- 3. YOU CAN'T BEAT A MACHINE WITH FEELINGS          -->
+<!-- They believe: AI is better at patterns than humans -->
+<!-- ═══════════════════════════════════════════════════ -->
 <section class="scene">
-  <div class="label rv">Like water</div>
-  <h2 class="headline rv d1" style="font-size:clamp(1.7rem,3.8vw,2.8rem)">When one sea gets still,<br>the system is <em>already in another.</em></h2>
-  <div class="water-lines rv d2" style="margin-top:48px">
-    <div class="water-line">Capital flows to wherever the <strong>wave is forming</strong></div>
-    <div class="water-line">11 engines with <strong>near-zero correlation</strong> to each other</div>
-    <div class="water-line">No attachment to any instrument, any thesis, <strong>any market</strong></div>
-    <div class="water-line">Every crash creates energy &mdash; and <strong>energy always finds somewhere to go</strong></div>
+  <div class="label rv">A question worth asking</div>
+  <p class="question rv d1">Can emotion outperform a system<br>that doesn't feel?</p>
+  <div class="divider rv d2" style="margin:48px auto"></div>
+  <p class="subline rv d3">AI diagnoses disease better than doctors. It drives cars. It writes code. It beats grandmasters at chess without being taught the rules. In every domain where pattern recognition matters, machines have already won.</p>
+  <p class="subline rv d4" style="margin-top:24px;color:var(--ink3);font-size:.85rem">Markets are the largest pattern recognition problem on earth.</p>
+</section>
+
+<!-- ═══════════════════════════════════════════════════ -->
+<!-- 4. IF 90% LOSE, SOMEONE'S WINNING BIG              -->
+<!-- They believe: trading is zero-sum at the margin    -->
+<!-- ═══════════════════════════════════════════════════ -->
+<section class="scene">
+  <div class="label rv">The math nobody talks about</div>
+  <h2 class="headline headline-md rv d1">90% of day traders<br><em>lose money.</em></h2>
+  <p class="question rv d2" style="margin-top:36px">Where does that money go?</p>
+  <p class="subline rv d3" style="margin-top:32px">It doesn't disappear. Every dollar lost by an emotional trader is gained by whoever was on the other side of that trade. The money flows from those who feel to those who compute.</p>
+</section>
+
+<!-- ═══════════════════════════════════════════════════ -->
+<!-- 5. THE WATER MOVES ON ITS OWN                      -->
+<!-- They believe: you can't force markets              -->
+<!-- ═══════════════════════════════════════════════════ -->
+<section class="scene" style="background:radial-gradient(ellipse 70% 50% at 50% 60%,rgba(26,74,110,0.08),transparent),var(--bg)">
+  <h2 class="headline rv">The water doesn't move<br><em>the way you want.</em></h2>
+  <p class="subline rv d1" style="margin-top:32px">It moves the way it moves. You don't create waves. You don't predict them. You don't fight them. They form on their own &mdash; born from trillions of dollars of human emotion, every second of every day.</p>
+  <div class="divider rv d2" style="margin:48px auto"></div>
+  <p class="subline rv d3" style="color:var(--ink3);font-size:.85rem">The only question is whether you can read the water.</p>
+</section>
+
+<!-- ═══════════════════════════════════════════════════ -->
+<!-- 6. A SYSTEM THAT READS EVERY OCEAN AT ONCE         -->
+<!-- They already accepted AI beats humans (section 3)  -->
+<!-- ═══════════════════════════════════════════════════ -->
+<section class="scene" id="system" style="background:radial-gradient(ellipse 60% 40% at 50% 50%,rgba(61,142,196,0.06),transparent),var(--bg)">
+  <div class="label rv">What if something already existed that could</div>
+  <h2 class="headline rv d1">read <em>every sea</em><br>at once.</h2>
+  <p class="subline rv d2" style="margin-top:32px">Not one market. Not one thesis. Not one model. A system watching every ocean &mdash; reading the water before the wave breaks.</p>
+  <div class="stat-row rv d3">
+    <div class="stat-item">
+      <span class="stat-num">2.29M</span>
+      <span class="stat-label">patterns scanned nightly</span>
+    </div>
+    <div class="stat-item">
+      <span class="stat-num">3,792</span>
+      <span class="stat-label">instruments watched</span>
+    </div>
+    <div class="stat-item">
+      <span class="stat-num">11</span>
+      <span class="stat-label">independent engines</span>
+    </div>
   </div>
-  <div class="scan-stats rv d3" style="margin-top:48px">
-    <div class="scan-stat">
-      <span class="scan-num" style="color:var(--ocean-light)">+2.8%</span>
-      <span class="scan-label">mean reversion engine<br>COVID worst 23 days</span>
+  <div class="stat-row rv d4" style="margin-top:32px">
+    <div class="stat-item">
+      <span class="stat-num" style="color:var(--ocean-light)">+2.8%</span>
+      <span class="stat-label">mean reversion engine<br>COVID worst 23 days</span>
     </div>
-    <div class="scan-stat">
-      <span class="scan-num" style="color:var(--ocean-light)">+7.3%</span>
-      <span class="scan-label">portfolio return<br>2022 bear market</span>
+    <div class="stat-item">
+      <span class="stat-num" style="color:var(--ocean-light)">+7.3%</span>
+      <span class="stat-label">portfolio return<br>2022 bear market</span>
     </div>
-    <div class="scan-stat">
-      <span class="scan-num" style="color:var(--ink3)">−34%</span>
-      <span class="scan-label">S&amp;P 500<br>same period</span>
+    <div class="stat-item">
+      <span class="stat-num" style="color:var(--ink3)">&minus;34%</span>
+      <span class="stat-label">S&amp;P 500<br>same period</span>
     </div>
   </div>
 </section>
 
-<!-- ═══════════════════════════════════════════ -->
-<!-- THE MACHINE                                -->
-<!-- ═══════════════════════════════════════════ -->
-<section class="scene scene-half">
-  <div class="label rv">The machine</div>
-  <h2 class="headline rv d1" style="font-size:clamp(1.5rem,3.2vw,2.4rem)">Runs from Tangier.<br><em>While you live your life.</em></h2>
-  <ul class="machine-list rv d2">
-    <li>Zero employees</li>
-    <li>Zero meetings</li>
-    <li>Zero opinions</li>
-    <li>Zero bad days</li>
-    <li>Zero market hours</li>
-    <li>Autonomous. 24/7.</li>
-  </ul>
-</section>
-
-<!-- ═══════════════════════════════════════════ -->
-<!-- THE GRAVEYARD                              -->
-<!-- ═══════════════════════════════════════════ -->
-<section class="scene" id="proof">
-  <div class="label rv">What gets left behind</div>
-  <h2 class="headline rv d1" style="font-size:clamp(1.5rem,3.2vw,2.4rem)">158 strategies entered the water.<br><em>40+ never came back.</em></h2>
-  <p class="subline rv d2" style="margin-top:24px">Every failure published. Every dead end documented. The complete graveyard is open to anyone who asks.</p>
-  <div class="graveyard-stats rv d3">
-    <div class="graveyard-stat">
-      <span class="graveyard-num">158</span>
-      <span class="graveyard-label">strategies tested</span>
+<!-- ═══════════════════════════════════════════════════ -->
+<!-- 7. PEOPLE ARE EXPENSIVE                            -->
+<!-- They believe: they've paid 2% fees for nothing     -->
+<!-- ═══════════════════════════════════════════════════ -->
+<section class="scene scene-compact">
+  <div class="label rv">A question about traditional funds</div>
+  <p class="question rv d1">How much of your return goes to paying<br>for people, offices, and opinions?</p>
+  <div class="cost-compare rv d2">
+    <div class="cost-box">
+      <div class="cost-title">Traditional fund</div>
+      <span class="cost-fee" style="color:var(--red)">2%</span>
+      <div class="cost-detail">Management fee. Hundreds of employees.<br>Offices. Analysts. Bonuses.<br>You pay whether they perform or not.</div>
     </div>
-    <div class="graveyard-stat">
-      <span class="graveyard-num">40+</span>
-      <span class="graveyard-label">killed &amp; published</span>
-    </div>
-    <div class="graveyard-stat">
-      <span class="graveyard-num">98.9M</span>
-      <span class="graveyard-label">signal rows analyzed</span>
-    </div>
-    <div class="graveyard-stat">
-      <span class="graveyard-num">16yr</span>
-      <span class="graveyard-label">walk-forward data</span>
+    <div class="cost-vs">vs</div>
+    <div class="cost-box">
+      <div class="cost-title">A machine</div>
+      <span class="cost-fee" style="color:var(--ocean-light)">0%</span>
+      <div class="cost-detail">Management fee. Zero employees.<br>Zero offices. Zero opinions.<br>You pay nothing unless you profit.</div>
     </div>
   </div>
-  <p class="subline rv d4" style="margin-top:32px;color:var(--ink3);font-size:.8rem">What does it tell you about a system<br>that shows you everything that failed?</p>
 </section>
 
-<!-- ═══════════════════════════════════════════ -->
-<!-- THE ZERO                                   -->
-<!-- ═══════════════════════════════════════════ -->
+<!-- ═══════════════════════════════════════════════════ -->
+<!-- THE ZERO — the big emotional moment                -->
+<!-- ═══════════════════════════════════════════════════ -->
 <section class="scene scene-zero">
   <div class="zero-number rv">0<span style="font-size:.6em">%</span></div>
   <div class="zero-word rv d1">emotion in every trade.</div>
   <p class="zero-sub rv d2">Every entry. Every exit. Every allocation. Calculated, executed, and settled by math. The machine doesn't feel fear. It doesn't feel hope. It reads the water and moves.</p>
-  <div class="divider-glow rv d3" style="margin-top:48px"></div>
+  <div class="divider-glow rv d3" style="margin-top:44px"></div>
 </section>
 
-<!-- ═══════════════════════════════════════════ -->
-<!-- THE TERMS                                  -->
-<!-- ═══════════════════════════════════════════ -->
-<section class="scene scene-half" id="terms">
+<!-- ═══════════════════════════════════════════════════ -->
+<!-- PROOF — the graveyard                              -->
+<!-- ═══════════════════════════════════════════════════ -->
+<section class="scene scene-compact" id="proof">
+  <div class="label rv">What gets left behind</div>
+  <h2 class="headline headline-sm rv d1">158 strategies entered the water.<br><em>40+ never came back.</em></h2>
+  <p class="subline rv d2" style="margin-top:20px">Every failure published. Every dead end documented. The complete graveyard is open to anyone who asks.</p>
+  <div class="grid-stats rv d3">
+    <div class="grid-stat">
+      <span class="grid-stat-num">158</span>
+      <span class="grid-stat-label">strategies tested</span>
+    </div>
+    <div class="grid-stat">
+      <span class="grid-stat-num">40+</span>
+      <span class="grid-stat-label">killed &amp; published</span>
+    </div>
+    <div class="grid-stat">
+      <span class="grid-stat-num">98.9M</span>
+      <span class="grid-stat-label">signal rows analyzed</span>
+    </div>
+    <div class="grid-stat">
+      <span class="grid-stat-num">16yr</span>
+      <span class="grid-stat-label">walk-forward data</span>
+    </div>
+  </div>
+  <p class="subline rv d4" style="margin-top:28px;color:var(--ink3);font-size:.78rem">What does it tell you about a system<br>that shows you everything that failed?</p>
+</section>
+
+<!-- ═══════════════════════════════════════════════════ -->
+<!-- TERMS                                              -->
+<!-- ═══════════════════════════════════════════════════ -->
+<section class="scene scene-compact" id="terms">
   <div class="label rv">The terms</div>
   <div class="terms-grid">
     <div class="term-card rv d1">
@@ -668,7 +557,7 @@ footer{
       <span class="term-sub">only when you make money</span>
     </div>
     <div class="term-card rv d3">
-      <span class="term-num" style="font-size:clamp(1.1rem,2.2vw,1.4rem);color:var(--ocean-light)">Limited</span>
+      <span class="term-num" style="font-size:clamp(1rem,2vw,1.3rem);color:var(--ocean-light)">Limited</span>
       <span class="term-label">Founding allocations.<br>Then the water fills.</span>
       <span class="term-sub">performance over scale</span>
     </div>
@@ -680,11 +569,11 @@ footer{
   </div>
 </section>
 
-<!-- ═══════════════════════════════════════════ -->
-<!-- THE DOOR                                   -->
-<!-- ═══════════════════════════════════════════ -->
+<!-- ═══════════════════════════════════════════════════ -->
+<!-- THE DOOR                                           -->
+<!-- ═══════════════════════════════════════════════════ -->
 <section class="scene scene-door">
-  <h2 class="headline rv" style="font-size:clamp(1.7rem,3.8vw,3rem)">If you can read the water,<br><em>the door is open.</em></h2>
+  <h2 class="headline headline-md rv">If you can read the water,<br><em>the door is open.</em></h2>
   <a href="mailto:info@prism.fund" class="door-cta rv d1">
     Enter <span class="arrow">&rarr;</span>
   </a>
@@ -696,7 +585,7 @@ footer{
 <!-- ═══ FOOTER ═══ -->
 <footer>
   <div class="ft-nav">
-    <a href="#how">How It Works</a>
+    <a href="#system">How It Works</a>
     <a href="#proof">Proof</a>
     <a href="#terms">Terms</a>
     <a href="mailto:info@prism.fund">Contact</a>
@@ -706,53 +595,54 @@ footer{
 </footer>
 
 <script>
-// ═══ SCROLL REVEAL ═══
-const ob = new IntersectionObserver(entries => {
-  entries.forEach(x => { if (x.isIntersecting) x.target.classList.add('v'); });
+const ob = new IntersectionObserver(e => {
+  e.forEach(x => { if (x.isIntersecting) x.target.classList.add('v'); });
 }, { threshold: 0.08, rootMargin: '0px 0px -50px 0px' });
 document.querySelectorAll('.rv').forEach(el => ob.observe(el));
 
-// ═══ PARTICLES ═══
+// particles
 (function(){
   const c = document.getElementById('particles');
-  for (let i = 0; i < 12; i++) {
+  for (let i = 0; i < 10; i++) {
     const p = document.createElement('div');
     p.className = 'particle';
-    p.style.left = Math.random() * 100 + '%';
-    p.style.top = Math.random() * 100 + '%';
-    p.style.animation = `drift ${14 + Math.random() * 18}s linear ${Math.random() * 12}s infinite`;
+    p.style.left = Math.random()*100+'%';
+    p.style.top = Math.random()*100+'%';
+    p.style.animation = `drift ${14+Math.random()*18}s linear ${Math.random()*12}s infinite`;
     c.appendChild(p);
   }
 })();
 
-// ═══ COUNTER ═══
+// counter
 (function(){
   const el = document.getElementById('counter');
   let done = false;
-  const cob = new IntersectionObserver(entries => {
-    if (entries[0].isIntersecting && !done) {
+  const cob = new IntersectionObserver(e => {
+    if (e[0].isIntersecting && !done) {
       done = true;
-      const end = 7.5, dur = 2000, t0 = performance.now();
-      (function tick(now) {
-        const p = Math.min((now - t0) / dur, 1);
-        const e = 1 - Math.pow(1 - p, 3);
-        el.textContent = '$' + (e * end).toFixed(1);
-        if (p < 1) requestAnimationFrame(tick);
+      const end=7.5, dur=2000, t0=performance.now();
+      (function tick(now){
+        const p=Math.min((now-t0)/dur,1);
+        el.textContent='$'+(p*(2-p)*end).toFixed(1); // ease out quad
+        if(p<1)requestAnimationFrame(tick);
       })(t0);
     }
   }, { threshold: 0.5 });
   cob.observe(el);
 })();
 
-// ═══ NAV SCROLL EFFECT ═══
-let lastY = 0;
-const nav = document.querySelector('nav');
-window.addEventListener('scroll', () => {
-  const y = window.scrollY;
-  nav.style.transform = y > 200 && y > lastY ? 'translateY(-100%)' : 'translateY(0)';
-  nav.style.transition = 'transform .3s';
-  lastY = y;
-}, { passive: true });
+// nav hide on scroll down
+let lastY=0;
+const nav=document.querySelector('nav');
+const ticker=document.querySelector('.ticker');
+window.addEventListener('scroll',()=>{
+  const y=window.scrollY;
+  const hide=y>200&&y>lastY;
+  nav.style.transform=hide?'translateY(-100%)':'translateY(0)';
+  ticker.style.transform=hide?'translateY(-82px)':'translateY(0)';
+  ticker.style.transition='transform .3s';
+  lastY=y;
+},{passive:true});
 </script>
 </body>
 </html>
