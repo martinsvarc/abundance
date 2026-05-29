@@ -6,150 +6,92 @@
 <title>Prism</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&family=Outfit:wght@200;300;400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Outfit:wght@200;300;400;500;600;700&display=swap" rel="stylesheet">
 <style>
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
-:root{
-  --bg:#faf8f4;
-  --ink:#141412;
-  --ink2:#484844;
-  --ink3:#a0a098;
-  --blue:#1e6b8a;
-  --dark:#111316;
-}
-html{scroll-behavior:smooth}
-body{font-family:'Outfit',sans-serif;background:var(--bg);color:var(--ink);-webkit-font-smoothing:antialiased;overflow-x:hidden}
+body{font-family:'Outfit',sans-serif;background:#faf8f4;color:#141412;-webkit-font-smoothing:antialiased;overflow-x:hidden}
 a{color:inherit;text-decoration:none}
-
-nav{
-  position:fixed;top:0;left:0;right:0;z-index:100;
-  padding:24px clamp(24px,5vw,56px);
-  display:flex;align-items:center;justify-content:space-between;
-  transition:opacity .4s;
-}
+nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:24px clamp(24px,5vw,56px);display:flex;justify-content:space-between;align-items:center;transition:opacity .4s}
 .logo{font-size:1rem;font-weight:500;letter-spacing:.2em;text-transform:uppercase}
 
-/* ═══ FRAMES ═══ */
-.f{
-  min-height:100vh;display:flex;flex-direction:column;
-  align-items:center;justify-content:center;text-align:center;
-  padding:160px clamp(28px,7vw,100px) 120px;
-  position:relative;overflow:hidden;
-}
-.f-dark{background:var(--dark);color:#ede9e2}
-.f-dark .mid{color:rgba(237,233,226,.45)}
-.f-dark .quiet{color:rgba(237,233,226,.25)}
-.f-short{min-height:auto;padding:120px clamp(28px,7vw,100px)}
+.s{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:160px clamp(28px,7vw,100px) 120px;position:relative;overflow:hidden}
+.s-ink{background:#141412;color:#ede9e2}
+.s-illus{background-size:cover;background-position:center}
+.s-illus::before{content:'';position:absolute;inset:0}
+.s-illus>*{position:relative;z-index:1}
+.s-illus-light::before{background:rgba(250,248,244,.8)}
+.s-illus-dark::before{background:rgba(20,20,18,.8)}
 
-/* ═══ ILLUSTRATED BG ═══ */
-.f-illus{position:relative;background-size:cover;background-position:center}
-.f-illus::before{content:'';position:absolute;inset:0;background:rgba(250,248,244,.82)}
-.f-illus>*{position:relative;z-index:1}
-.f-illus-dark::before{background:rgba(17,19,22,.78)}
+h1,h2,.q{font-family:'Playfair Display',Georgia,serif;font-weight:400}
+.xl{font-size:clamp(3rem,9vw,7rem);line-height:.92;letter-spacing:-.03em;max-width:940px}
+.lg{font-size:clamp(1.9rem,4.5vw,3.6rem);line-height:1.08;max-width:780px}
+.xl em,.lg em{font-style:italic;color:#1e6b8a}
+.s-ink .xl em,.s-ink .lg em{color:#5db8de}
+.q{font-size:clamp(1.5rem,3.5vw,2.6rem);font-style:italic;color:#484844;max-width:620px;margin:0 auto;line-height:1.25}
+.p{font-size:clamp(1.15rem,2.2vw,1.4rem);font-weight:300;color:#484844;line-height:1.9;max-width:480px;margin:0 auto}
+.s-ink .p{color:rgba(237,233,226,.45)}
+.sm{font-size:clamp(1rem,1.8vw,1.2rem);font-weight:300;color:#a0a098;line-height:1.8;max-width:440px;margin:0 auto}
+.s-ink .sm{color:rgba(237,233,226,.25)}
+.tag{font-size:.78rem;font-weight:400;letter-spacing:.22em;text-transform:uppercase;color:#a0a098;margin-bottom:28px}
+.num{font-family:'Outfit',sans-serif;font-size:clamp(6.5rem,20vw,16rem);font-weight:700;line-height:.75;letter-spacing:-.06em;background:linear-gradient(180deg,#141412 15%,#a0a098);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
 
-/* ═══ TYPE ═══ */
-.mega{
-  font-family:'Playfair Display',Georgia,serif;
-  font-size:clamp(3rem,9vw,7rem);font-weight:400;
-  line-height:.92;letter-spacing:-.03em;max-width:940px;
-}
-.mega em{font-style:italic;color:var(--blue)}
-.f-dark .mega em{color:#5db8de}
-
-.big{
-  font-family:'Playfair Display',Georgia,serif;
-  font-size:clamp(1.9rem,4.5vw,3.6rem);font-weight:400;
-  line-height:1.08;max-width:780px;
-}
-.big em{font-style:italic;color:var(--blue)}
-.f-dark .big em{color:#5db8de}
-
-.mid{
-  font-size:clamp(1.15rem,2.2vw,1.4rem);font-weight:300;
-  color:var(--ink2);line-height:1.9;max-width:480px;margin:0 auto;
-}
-.quiet{
-  font-size:clamp(1rem,1.8vw,1.2rem);font-weight:300;
-  color:var(--ink3);line-height:1.8;max-width:440px;margin:0 auto;
-}
-.tag{font-size:.78rem;font-weight:400;letter-spacing:.22em;text-transform:uppercase;color:var(--ink3);margin-bottom:28px}
-.f-dark .tag{color:rgba(237,233,226,.2)}
-
-.num{
-  font-family:'Outfit',sans-serif;
-  font-size:clamp(6.5rem,20vw,16rem);font-weight:700;
-  line-height:.75;letter-spacing:-.06em;
-  background:linear-gradient(180deg,var(--ink) 15%,var(--ink3) 100%);
-  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
-}
-
-/* ═══ PILLS ═══ */
 .pills{display:flex;gap:12px;flex-wrap:wrap;justify-content:center;margin-top:52px}
-.pill{
-  padding:16px 32px;border:1px solid rgba(0,0,0,.08);border-radius:100px;
-  font-family:'Playfair Display',Georgia,serif;
-  font-size:clamp(1rem,1.6vw,1.2rem);font-style:italic;color:var(--ink2);
-  animation:pf 6s ease-in-out infinite;
-}
-.pill:nth-child(2){animation-delay:-1.5s}
-.pill:nth-child(3){animation-delay:-3s}
-.pill:nth-child(4){animation-delay:-4.5s}
-@keyframes pf{0%,100%{transform:translateY(0)}50%{transform:translateY(-4px)}}
+.pill{padding:16px 32px;border:1px solid rgba(0,0,0,.07);border-radius:100px;font-family:'Playfair Display',Georgia,serif;font-size:clamp(1rem,1.6vw,1.2rem);font-style:italic;color:#484844;animation:fl 6s ease-in-out infinite}
+.pill:nth-child(2){animation-delay:-1.5s}.pill:nth-child(3){animation-delay:-3s}.pill:nth-child(4){animation-delay:-4.5s}
+@keyframes fl{0%,100%{transform:translateY(0)}50%{transform:translateY(-4px)}}
 
-/* ═══ STATS ═══ */
-.stats{display:flex;gap:clamp(28px,6vw,72px);justify-content:center;flex-wrap:wrap;margin-top:48px}
-.st{text-align:center}
-.st-n{font-family:'Outfit',sans-serif;font-size:clamp(1.7rem,3.8vw,2.6rem);font-weight:600;display:block;line-height:1;color:var(--blue)}
-.f-dark .st-n{color:#5db8de}
-.st-l{font-size:clamp(.82rem,1.1vw,.95rem);color:var(--ink3);margin-top:8px;font-weight:300}
-.f-dark .st-l{color:rgba(237,233,226,.2)}
+.row{display:flex;gap:clamp(28px,6vw,72px);justify-content:center;flex-wrap:wrap;margin-top:48px}
+.row-item{text-align:center}
+.row-n{font-family:'Outfit',sans-serif;font-size:clamp(1.7rem,3.8vw,2.6rem);font-weight:600;display:block;line-height:1;color:#1e6b8a}
+.s-ink .row-n{color:#5db8de}
+.row-l{font-size:clamp(.82rem,1.1vw,.95rem);color:#a0a098;margin-top:8px;font-weight:300}
+.s-ink .row-l{color:rgba(237,233,226,.2)}
 
-/* ═══ FACTS ═══ */
-.facts{display:flex;gap:clamp(20px,4vw,52px);justify-content:center;flex-wrap:wrap;margin-top:52px}
-.fact{text-align:center;max-width:180px}
-.fact-n{font-family:'Outfit',sans-serif;font-size:clamp(2.2rem,5vw,3.2rem);font-weight:700;display:block;line-height:1;margin-bottom:8px;color:#ede9e2}
-.fact-d{font-size:clamp(.85rem,1.1vw,1rem);color:rgba(237,233,226,.25);font-weight:300;line-height:1.5}
+.facts{display:flex;gap:clamp(20px,4vw,48px);justify-content:center;flex-wrap:wrap;margin-top:48px}
+.fact{text-align:center;max-width:170px}
+.fact b{font-size:clamp(2rem,4.5vw,3rem);font-weight:700;display:block;margin-bottom:6px}
+.fact span{font-size:clamp(.85rem,1.1vw,.95rem);color:rgba(237,233,226,.25);font-weight:300;line-height:1.5}
 
-/* ═══ WORDS ═══ */
-.words{display:flex;flex-wrap:wrap;justify-content:center;gap:0 .3em}
-.words .w{opacity:0;transform:translateY(12px);transition:opacity .7s cubic-bezier(.16,1,.3,1),transform .7s cubic-bezier(.16,1,.3,1)}
-.words.v .w{opacity:1;transform:translateY(0)}
+.marquee{overflow:hidden;padding:44px 0;background:#141412}
+.marquee-t{display:flex;gap:48px;animation:mt 28s linear infinite;white-space:nowrap}
+.mw{font-family:'Playfair Display',Georgia,serif;font-size:clamp(2.4rem,6vw,4.5rem);font-style:italic;color:rgba(255,255,255,.04);flex-shrink:0;user-select:none}
+@keyframes mt{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
 
 .rv{opacity:0;transform:translateY(18px);transition:opacity 1s cubic-bezier(.16,1,.3,1),transform 1s cubic-bezier(.16,1,.3,1)}
 .rv.v{opacity:1;transform:translateY(0)}
 .d1{transition-delay:.15s}.d2{transition-delay:.3s}.d3{transition-delay:.45s}
+.words{display:flex;flex-wrap:wrap;justify-content:center;gap:0 .3em}
+.words .w{opacity:0;transform:translateY(10px);transition:opacity .6s cubic-bezier(.16,1,.3,1),transform .6s cubic-bezier(.16,1,.3,1)}
+.words.v .w{opacity:1;transform:translateY(0)}
 
-.invite{font-size:clamp(1.1rem,2vw,1.4rem);font-weight:400;color:var(--ink);border-bottom:1px solid rgba(0,0,0,.1);padding-bottom:4px;transition:border-color .3s}
-.invite:hover{border-color:var(--ink)}
+.inv{font-size:clamp(1.1rem,2vw,1.3rem);font-weight:400;border-bottom:1px solid rgba(0,0,0,.1);padding-bottom:3px;transition:border-color .3s}
+.inv:hover{border-color:#141412}
 
-footer{padding:72px 32px;text-align:center}
-.ft-legal{font-size:.75rem;color:var(--ink3);line-height:2.2;max-width:560px;margin:0 auto 14px;font-weight:300}
-.ft-copy{font-size:.75rem;color:var(--ink3);font-weight:300}
+footer{padding:64px 32px;text-align:center}
+footer p{font-size:.75rem;color:#a0a098;line-height:2;font-weight:300;max-width:540px;margin:0 auto}
+footer p+p{margin-top:10px}
 
-@media(max-width:480px){nav{padding:16px 20px}.f{padding:130px 24px 100px}.f-short{padding:100px 24px 80px}}
+@media(max-width:480px){nav{padding:16px 20px}.s{padding:130px 24px 100px}}
 </style>
 </head>
 <body>
 
 <nav><span class="logo">Prism</span></nav>
 
-<!-- ═══ HERO ═══ -->
-<section class="f f-illus" style="padding-top:200px;background-image:url('brand-hero.jpg')">
+<section class="s s-illus s-illus-light" style="padding-top:200px;background-image:url(brand-hero.jpg)">
   <div class="tag rv">Quantitative AI Market Observer</div>
-  <h1 class="mega words" data-word>Something is <em>shifting.</em></h1>
-  <p class="mid rv d2" style="margin-top:44px">You feel it. The tools are changing.<br>The money is moving differently.</p>
+  <h1 class="xl words" data-w>Something is <em>shifting.</em></h1>
+  <p class="p rv d2" style="margin-top:44px">You feel it. The tools are changing.<br>The money is moving differently.</p>
 </section>
 
-<!-- ═══ $7.5T ═══ -->
-<section class="f">
+<section class="s">
   <div class="num rv" id="counter">$7.5</div>
-  <p class="mid rv d1" style="margin-top:32px">trillion flows through global markets<br>every single day.</p>
-  <p class="quiet rv d2" style="margin-top:24px">This isn't a secret. It's just a number<br>most people never stop to feel.</p>
+  <p class="p rv d1" style="margin-top:32px">trillion flows through global markets<br>every single day.</p>
+  <p class="sm rv d2" style="margin-top:24px">This isn't a secret. It's just a number<br>most people never stop to feel.</p>
 </section>
 
-<!-- ═══ FEELING ═══ -->
-<section class="f f-illus" style="background-image:url('brand-emotion.jpg')">
-  <h2 class="mega words" data-word>Most people trade on <em>feeling.</em></h2>
+<section class="s s-illus s-illus-light" style="background-image:url(brand-emotion.jpg)">
+  <h2 class="xl words" data-w>Most people trade on <em>feeling.</em></h2>
   <div class="pills rv d1">
     <div class="pill">Fear sells the bottom</div>
     <div class="pill">Hope buys the top</div>
@@ -158,97 +100,81 @@ footer{padding:72px 32px;text-align:center}
   </div>
 </section>
 
-<!-- ═══ OPPORTUNITY ═══ -->
-<section class="f f-illus" style="background-image:url('brand-abundance.jpg')">
-  <h2 class="mega words" data-word>Every emotional dollar is someone else's <em>opportunity.</em></h2>
+<section class="s s-illus s-illus-light" style="background-image:url(brand-abundance.jpg)">
+  <h2 class="xl words" data-w>Every emotional dollar is someone else's <em>opportunity.</em></h2>
 </section>
 
-<!-- ═══ YOU ALREADY KNOW — DARK ═══ -->
-<section class="f f-illus f-illus-dark f-dark" style="background-image:url('brand-currents.jpg')">
-  <h2 class="mega words" data-word>You already <em>know this.</em></h2>
-  <p class="mid rv d1" style="margin-top:48px">You know the game changed.<br>You know AI is smarter than your advisor.<br>You know you're overpaying for opinions.</p>
+<section class="s s-ink s-illus s-illus-dark" style="background-image:url(brand-currents.jpg)">
+  <h2 class="xl words" data-w>You already <em>know this.</em></h2>
+  <p class="p rv d1" style="margin-top:44px">You know the game changed.<br>You know AI is smarter than your advisor.<br>You know you're overpaying for opinions.</p>
   <div class="facts rv d2">
-    <div class="fact"><span class="fact-n">86%</span><span class="fact-d">of hedge funds use AI internally</span></div>
-    <div class="fact"><span class="fact-n">64%</span><span class="fact-d">of returns eaten by fees</span></div>
-    <div class="fact"><span class="fact-n">46%</span><span class="fact-d">switching wealth managers</span></div>
+    <div class="fact"><b>86%</b><span>of hedge funds use AI internally</span></div>
+    <div class="fact"><b>64%</b><span>of returns eaten by fees</span></div>
+    <div class="fact"><b>46%</b><span>switching wealth managers</span></div>
   </div>
-  <p class="quiet rv d3" style="margin-top:48px">You see the problem clearly.<br>You just haven't had access to the solution.</p>
+  <p class="sm rv d3" style="margin-top:44px">You see the problem clearly.<br>You just haven't had access to the solution.</p>
 </section>
 
-<!-- ═══ MACHINES WON ═══ -->
-<section class="f">
-  <h2 class="mega words" data-word>Machines already <em>won.</em></h2>
-  <p class="mid rv d1" style="margin-top:48px">Medicine. Chess. Language. Driving.<br>The only field they haven't taken<br>is the biggest one.</p>
+<section class="s">
+  <h2 class="xl words" data-w>Machines already <em>won.</em></h2>
+  <p class="p rv d1" style="margin-top:44px">Medicine. Chess. Language. Driving.<br>The only field they haven't taken<br>is the biggest one.</p>
 </section>
 
-<!-- ═══ 90% ═══ -->
-<section class="f">
-  <h2 class="mega words" data-word>90% of traders <em>lose.</em></h2>
-  <p class="mid rv d1" style="margin-top:44px">That money doesn't vanish.<br>It flows to whoever's on the other side.</p>
+<section class="s">
+  <h2 class="xl words" data-w>90% of traders <em>lose.</em></h2>
+  <p class="p rv d1" style="margin-top:40px">That money doesn't vanish.<br>It flows to whoever's on the other side.</p>
 </section>
 
-<!-- ═══ THE WATER ═══ -->
-<section class="f f-illus" style="background-image:url('brand-prism.jpg')">
-  <h2 class="mega words" data-word>The water moves the way <em>it</em> wants.</h2>
-  <p class="mid rv d1" style="margin-top:44px">You can't control it. You can't predict it.<br>You can only learn to read it.</p>
+<section class="s s-illus s-illus-light" style="background-image:url(brand-prism.jpg)">
+  <h2 class="xl words" data-w>The water moves the way <em>it</em> wants.</h2>
+  <p class="p rv d1" style="margin-top:40px">You can't control it. You can't predict it.<br>You can only learn to read it.</p>
 </section>
 
-<!-- ═══ EVERY OCEAN — DARK ═══ -->
-<section class="f f-illus f-illus-dark f-dark" style="background-image:url('brand-currents.jpg');background-position:center top">
-  <h2 class="mega words" data-word>Something watches <em>every ocean</em> at once.</h2>
-  <div class="stats rv d1">
-    <div class="st"><span class="st-n">2.29M</span><span class="st-l">patterns nightly</span></div>
-    <div class="st"><span class="st-n">3,792</span><span class="st-l">instruments</span></div>
-    <div class="st"><span class="st-n">11</span><span class="st-l">engines</span></div>
+<section class="s s-ink s-illus s-illus-dark" style="background-image:url(brand-currents.jpg);background-position:top">
+  <h2 class="xl words" data-w>Something watches <em>every ocean</em> at once.</h2>
+  <div class="row rv d1">
+    <div class="row-item"><span class="row-n">2.29M</span><span class="row-l">patterns nightly</span></div>
+    <div class="row-item"><span class="row-n">3,792</span><span class="row-l">instruments</span></div>
+    <div class="row-item"><span class="row-n">11</span><span class="row-l">engines</span></div>
   </div>
 </section>
 
-<!-- ═══ PANIC ═══ -->
-<section class="f">
-  <h2 class="big words" data-word>When everyone panicked, the water kept <em>flowing.</em></h2>
-  <div class="stats rv d1" style="margin-top:48px">
-    <div class="st"><span class="st-n">+2.8%</span><span class="st-l">COVID crash</span></div>
-    <div class="st"><span class="st-n">+7.3%</span><span class="st-l">2022 bear market</span></div>
+<section class="s">
+  <h2 class="lg words" data-w>When everyone panicked, the water kept <em>flowing.</em></h2>
+  <div class="row rv d1" style="margin-top:48px">
+    <div class="row-item"><span class="row-n">+2.8%</span><span class="row-l">COVID crash</span></div>
+    <div class="row-item"><span class="row-n">+7.3%</span><span class="row-l">2022 bear</span></div>
   </div>
-  <p class="quiet rv d2" style="margin-top:48px">Yeah, we know how this sounds.<br>158 strategies tested. 40+ killed and published.<br>The graveyard is open to anyone who asks.</p>
+  <p class="sm rv d2" style="margin-top:44px">Yeah, we know how this sounds.<br>158 strategies tested. 40+ killed and published.<br>The graveyard is open to anyone who asks.</p>
 </section>
 
-<!-- ═══ THE TRUTH ═══ -->
-<section class="f f-illus" style="background-image:url('brand-abundance.jpg');background-position:center top">
-  <h2 class="mega words" data-word>The abundance was always <em>there.</em></h2>
-  <p class="mid rv d1" style="margin-top:48px">Some people see it. Most don't.<br>That's not a problem to solve.</p>
+<div class="marquee">
+  <div class="marquee-t"><span class="mw">zero emotion</span><span class="mw">zero overhead</span><span class="mw">zero noise</span><span class="mw">zero emotion</span><span class="mw">zero overhead</span><span class="mw">zero noise</span><span class="mw">zero emotion</span><span class="mw">zero overhead</span><span class="mw">zero noise</span><span class="mw">zero emotion</span><span class="mw">zero overhead</span><span class="mw">zero noise</span></div>
+</div>
+
+<section class="s s-illus s-illus-light" style="background-image:url(brand-abundance.jpg);background-position:top">
+  <h2 class="xl words" data-w>The abundance was always <em>there.</em></h2>
+  <p class="p rv d1" style="margin-top:44px">Some people see it. Most don't.<br>That's not a problem to solve.</p>
 </section>
 
-<!-- ═══ THE EXHALE ═══ -->
-<section class="f f-illus" style="min-height:80vh;background-image:url('brand-horizon.jpg')">
-  <h2 class="big words" data-word>The thing you've been sensing <em>already exists.</em></h2>
-  <p class="quiet rv d1" style="margin-top:44px">No management fee. AI reads the water.<br>Glass-box transparency. Founder's money inside.<br>You can see everything.</p>
-  <a href="mailto:info@prism.fund" class="invite rv d2" style="margin-top:60px">info@prism.fund</a>
+<section class="s s-illus s-illus-light" style="min-height:80vh;background-image:url(brand-horizon.jpg)">
+  <h2 class="lg words" data-w>The thing you've been sensing <em>already exists.</em></h2>
+  <p class="sm rv d1" style="margin-top:40px">No management fee. AI reads the water.<br>Glass-box transparency. Founder's money inside.</p>
+  <a href="mailto:info@prism.fund" class="inv rv d2" style="margin-top:52px">info@prism.fund</a>
 </section>
 
 <footer>
-  <p class="ft-legal">Past performance is not indicative of future results. Not an offer to sell or solicitation to buy securities. All investments involve risk. Walk-forward out-of-sample tested. Accredited investors only.</p>
-  <p class="ft-copy">&copy; 2026 Prism &middot; Tangier</p>
+  <p>Past performance is not indicative of future results. Not an offer to sell or solicitation to buy securities. All investments involve risk. Walk-forward out-of-sample tested. Accredited investors only.</p>
+  <p>&copy; 2026 Prism &middot; Tangier</p>
 </footer>
 
 <script>
-const ob=new IntersectionObserver(e=>{e.forEach(x=>{if(x.isIntersecting)x.target.classList.add('v')})},{threshold:.1,rootMargin:'0px 0px -40px 0px'});
+new IntersectionObserver(e=>e.forEach(x=>{if(x.isIntersecting)x.target.classList.add('v')}),{threshold:.1,rootMargin:'0px 0px -40px 0px'}).observe(document.body);
+const ob=new IntersectionObserver(e=>e.forEach(x=>{if(x.isIntersecting)x.target.classList.add('v')}),{threshold:.1,rootMargin:'0px 0px -40px 0px'});
 document.querySelectorAll('.rv').forEach(el=>ob.observe(el));
-
-document.querySelectorAll('[data-word]').forEach(el=>{
-  let i=0;
-  el.innerHTML=el.innerHTML.replace(/(<[^>]+>)|(\S+)/g,(m,tag,word)=>{
-    if(tag)return tag;
-    return `<span class="w" style="transition-delay:${i++*.09}s">${word}</span>`;
-  });
-  new IntersectionObserver(e=>{if(e[0].isIntersecting)el.classList.add('v')},{threshold:.2}).observe(el);
-});
-
-(function(){const el=document.getElementById('counter');let d=false;new IntersectionObserver(e=>{if(e[0].isIntersecting&&!d){d=true;const end=7.5,dur=2400,t0=performance.now();(function t(now){const p=Math.min((now-t0)/dur,1);el.textContent='$'+(p*(2-p)*end).toFixed(1);if(p<1)requestAnimationFrame(t)})(t0)}},{threshold:.5}).observe(el)})();
-
-const nav=document.querySelector('nav');
-window.addEventListener('scroll',()=>{nav.style.opacity=window.scrollY>300?'0':'1'},{passive:true});
-
+document.querySelectorAll('[data-w]').forEach(el=>{let i=0;el.innerHTML=el.innerHTML.replace(/(<[^>]+>)|(\S+)/g,(m,t,w)=>t||`<span class="w" style="transition-delay:${i++*.08}s">${w}</span>`);new IntersectionObserver(e=>{if(e[0].isIntersecting)el.classList.add('v')},{threshold:.15}).observe(el)});
+(function(){const el=document.getElementById('counter');let d=false;new IntersectionObserver(e=>{if(e[0].isIntersecting&&!d){d=true;const end=7.5,dur=2200,t0=performance.now();(function t(now){const p=Math.min((now-t0)/dur,1);el.textContent='$'+(p*(2-p)*end).toFixed(1);if(p<1)requestAnimationFrame(t)})(t0)}},{threshold:.5}).observe(el)})();
+window.addEventListener('scroll',()=>{document.querySelector('nav').style.opacity=scrollY>300?'0':'1'},{passive:true});
 </script>
 </body>
 </html>
