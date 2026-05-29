@@ -255,6 +255,36 @@ body::before{
   box-shadow:0 0 8px var(--ocean-light);
 }
 
+/* ═══ THE GRAVEYARD ═══ */
+.graveyard-stats{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:2px;
+  max-width:700px;
+  width:100%;
+  margin:48px auto 0;
+}
+@media(max-width:640px){.graveyard-stats{grid-template-columns:repeat(2,1fr)}}
+.graveyard-stat{
+  background:var(--bg2);
+  border:1px solid rgba(255,255,255,0.03);
+  padding:28px 16px;
+  text-align:center;
+}
+.graveyard-num{
+  font-family:'JetBrains Mono',monospace;
+  font-size:clamp(1.2rem,2.5vw,1.6rem);
+  font-weight:500;
+  color:var(--ink);
+  display:block;
+  line-height:1;
+  margin-bottom:6px;
+}
+.graveyard-label{
+  font-size:.65rem;
+  color:var(--ink3);
+}
+
 /* ═══ SCENE 7: THE ZERO ═══ */
 .scene-zero{
   background:var(--bg);
@@ -295,7 +325,7 @@ body::before{
 /* ═══ SCENE 8: THE TERMS ═══ */
 .terms-grid{
   display:grid;
-  grid-template-columns:repeat(3,1fr);
+  grid-template-columns:repeat(4,1fr);
   gap:2px;
   max-width:720px;
   width:100%;
@@ -527,6 +557,20 @@ footer{
     <div class="water-line">No attachment to any instrument, any thesis, <strong>any market</strong></div>
     <div class="water-line">Every crash creates energy &mdash; and <strong>energy always finds somewhere to go</strong></div>
   </div>
+  <div class="scan-stats rv d3" style="margin-top:48px">
+    <div class="scan-stat">
+      <span class="scan-num" style="color:var(--ocean-light)">+2.8%</span>
+      <span class="scan-label">mean reversion engine<br>COVID worst 23 days</span>
+    </div>
+    <div class="scan-stat">
+      <span class="scan-num" style="color:var(--ocean-light)">+7.3%</span>
+      <span class="scan-label">portfolio return<br>2022 bear market</span>
+    </div>
+    <div class="scan-stat">
+      <span class="scan-num" style="color:var(--ink3)">−34%</span>
+      <span class="scan-label">S&amp;P 500<br>same period</span>
+    </div>
+  </div>
 </section>
 
 <!-- ═══════════════════════════════════════════ -->
@@ -543,6 +587,34 @@ footer{
     <li>Zero market hours</li>
     <li>Autonomous. 24/7.</li>
   </ul>
+</section>
+
+<!-- ═══════════════════════════════════════════ -->
+<!-- THE GRAVEYARD — what was killed             -->
+<!-- ═══════════════════════════════════════════ -->
+<section class="scene">
+  <div class="label rv">What gets left behind</div>
+  <h2 class="headline rv d1" style="font-size:clamp(1.6rem,3.5vw,2.6rem)">158 strategies entered the water.<br><em>40+ never came back.</em></h2>
+  <p class="subline rv d2" style="margin-top:24px">Every failure published. Every dead end documented. The complete graveyard is open to anyone who asks.</p>
+  <div class="graveyard-stats rv d3">
+    <div class="graveyard-stat">
+      <span class="graveyard-num">158</span>
+      <span class="graveyard-label">strategies tested</span>
+    </div>
+    <div class="graveyard-stat">
+      <span class="graveyard-num">40+</span>
+      <span class="graveyard-label">killed &amp; published</span>
+    </div>
+    <div class="graveyard-stat">
+      <span class="graveyard-num">98.9M</span>
+      <span class="graveyard-label">signal rows analyzed</span>
+    </div>
+    <div class="graveyard-stat">
+      <span class="graveyard-num">16yr</span>
+      <span class="graveyard-label">walk-forward data</span>
+    </div>
+  </div>
+  <p class="subline rv d4" style="margin-top:32px;color:var(--ink3);font-size:.82rem">What does it tell you about a system<br>that shows you everything that failed?</p>
 </section>
 
 <!-- ═══════════════════════════════════════════ -->
@@ -575,6 +647,11 @@ footer{
       <span class="term-num" style="font-size:clamp(1.2rem,2.5vw,1.6rem);color:var(--ocean-light)">Limited</span>
       <span class="term-label">Founding allocations.<br>Then the water fills.</span>
       <span class="term-sub">performance over scale</span>
+    </div>
+    <div class="term-card rv d4">
+      <span class="term-num">100%</span>
+      <span class="term-label">Founder's capital<br>alongside yours.</span>
+      <span class="term-sub">same water, same waves</span>
     </div>
   </div>
 </section>
