@@ -41,13 +41,11 @@ nav{
 .f-dark .quiet{color:rgba(237,233,226,.25)}
 .f-short{min-height:auto;padding:120px clamp(28px,7vw,100px)}
 
-/* ═══ ILLUSTRATION DIVIDERS ═══ */
-.illus{
-  width:100%;max-height:40vh;object-fit:cover;display:block;
-  filter:saturate(.9);
-}
-.illus-full{max-height:50vh}
-.illus-short{max-height:28vh}
+/* ═══ ILLUSTRATED BG ═══ */
+.f-illus{position:relative;background-size:cover;background-position:center}
+.f-illus::before{content:'';position:absolute;inset:0;background:rgba(250,248,244,.82)}
+.f-illus>*{position:relative;z-index:1}
+.f-illus-dark::before{background:rgba(17,19,22,.78)}
 
 /* ═══ TYPE ═══ */
 .mega{
@@ -136,14 +134,11 @@ footer{padding:72px 32px;text-align:center}
 <nav><span class="logo">Prism</span></nav>
 
 <!-- ═══ HERO ═══ -->
-<section class="f" style="padding-top:200px">
+<section class="f f-illus" style="padding-top:200px;background-image:url('brand-hero.jpg')">
   <div class="tag rv">Quantitative AI Market Observer</div>
   <h1 class="mega words" data-word>Something is <em>shifting.</em></h1>
   <p class="mid rv d2" style="margin-top:44px">You feel it. The tools are changing.<br>The money is moving differently.</p>
 </section>
-
-<!-- ═══ ILLUSTRATION: Two seas meeting ═══ -->
-<img src="brand-hero.jpg" class="illus illus-full" alt="">
 
 <!-- ═══ $7.5T ═══ -->
 <section class="f">
@@ -152,11 +147,8 @@ footer{padding:72px 32px;text-align:center}
   <p class="quiet rv d2" style="margin-top:24px">This isn't a secret. It's just a number<br>most people never stop to feel.</p>
 </section>
 
-<!-- ═══ ILLUSTRATION: Emotion waves ═══ -->
-<img src="brand-emotion.jpg" class="illus" alt="">
-
 <!-- ═══ FEELING ═══ -->
-<section class="f">
+<section class="f f-illus" style="background-image:url('brand-emotion.jpg')">
   <h2 class="mega words" data-word>Most people trade on <em>feeling.</em></h2>
   <div class="pills rv d1">
     <div class="pill">Fear sells the bottom</div>
@@ -167,15 +159,12 @@ footer{padding:72px 32px;text-align:center}
 </section>
 
 <!-- ═══ OPPORTUNITY ═══ -->
-<section class="f">
+<section class="f f-illus" style="background-image:url('brand-abundance.jpg')">
   <h2 class="mega words" data-word>Every emotional dollar is someone else's <em>opportunity.</em></h2>
 </section>
 
-<!-- ═══ ILLUSTRATION: Abundance caustics ═══ -->
-<img src="brand-abundance.jpg" class="illus illus-full" alt="">
-
 <!-- ═══ YOU ALREADY KNOW — DARK ═══ -->
-<section class="f f-dark">
+<section class="f f-illus f-illus-dark f-dark" style="background-image:url('brand-currents.jpg')">
   <h2 class="mega words" data-word>You already <em>know this.</em></h2>
   <p class="mid rv d1" style="margin-top:48px">You know the game changed.<br>You know AI is smarter than your advisor.<br>You know you're overpaying for opinions.</p>
   <div class="facts rv d2">
@@ -198,20 +187,14 @@ footer{padding:72px 32px;text-align:center}
   <p class="mid rv d1" style="margin-top:44px">That money doesn't vanish.<br>It flows to whoever's on the other side.</p>
 </section>
 
-<!-- ═══ ILLUSTRATION: Prism / light refraction ═══ -->
-<img src="brand-prism.jpg" class="illus" alt="">
-
 <!-- ═══ THE WATER ═══ -->
-<section class="f">
+<section class="f f-illus" style="background-image:url('brand-prism.jpg')">
   <h2 class="mega words" data-word>The water moves the way <em>it</em> wants.</h2>
   <p class="mid rv d1" style="margin-top:44px">You can't control it. You can't predict it.<br>You can only learn to read it.</p>
 </section>
 
-<!-- ═══ ILLUSTRATION: Deep currents ═══ -->
-<img src="brand-currents.jpg" class="illus" alt="">
-
 <!-- ═══ EVERY OCEAN — DARK ═══ -->
-<section class="f f-dark">
+<section class="f f-illus f-illus-dark f-dark" style="background-image:url('brand-currents.jpg');background-position:center top">
   <h2 class="mega words" data-word>Something watches <em>every ocean</em> at once.</h2>
   <div class="stats rv d1">
     <div class="st"><span class="st-n">2.29M</span><span class="st-l">patterns nightly</span></div>
@@ -231,16 +214,13 @@ footer{padding:72px 32px;text-align:center}
 </section>
 
 <!-- ═══ THE TRUTH ═══ -->
-<section class="f">
+<section class="f f-illus" style="background-image:url('brand-abundance.jpg');background-position:center top">
   <h2 class="mega words" data-word>The abundance was always <em>there.</em></h2>
   <p class="mid rv d1" style="margin-top:48px">Some people see it. Most don't.<br>That's not a problem to solve.</p>
 </section>
 
-<!-- ═══ ILLUSTRATION: Open horizon ═══ -->
-<img src="brand-horizon.jpg" class="illus illus-short" alt="">
-
 <!-- ═══ THE EXHALE ═══ -->
-<section class="f" style="min-height:80vh">
+<section class="f f-illus" style="min-height:80vh;background-image:url('brand-horizon.jpg')">
   <h2 class="big words" data-word>The thing you've been sensing <em>already exists.</em></h2>
   <p class="quiet rv d1" style="margin-top:44px">No management fee. AI reads the water.<br>Glass-box transparency. Founder's money inside.<br>You can see everything.</p>
   <a href="mailto:info@prism.fund" class="invite rv d2" style="margin-top:60px">info@prism.fund</a>
@@ -269,11 +249,6 @@ document.querySelectorAll('[data-word]').forEach(el=>{
 const nav=document.querySelector('nav');
 window.addEventListener('scroll',()=>{nav.style.opacity=window.scrollY>300?'0':'1'},{passive:true});
 
-// illustration reveal on scroll
-document.querySelectorAll('.illus').forEach(img=>{
-  img.style.opacity='0';img.style.transition='opacity 1.2s ease';
-  new IntersectionObserver(e=>{if(e[0].isIntersecting)img.style.opacity='1'},{threshold:.1}).observe(img);
-});
 </script>
 </body>
 </html>
