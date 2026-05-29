@@ -12,7 +12,6 @@
 :root{
   --bg:#0f1117;
   --bg2:#141820;
-  --bg3:#1a1e28;
   --ink:#eceae5;
   --ink2:#b0ada6;
   --ink3:#6e6b64;
@@ -31,8 +30,6 @@ body{
   overflow-x:hidden;
 }
 a{color:inherit;text-decoration:none}
-
-/* ═══ NOISE ═══ */
 body::before{
   content:'';position:fixed;inset:0;z-index:9999;pointer-events:none;opacity:.03;
   background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
@@ -49,18 +46,11 @@ nav{
   border-bottom:1px solid rgba(255,255,255,0.04);
   transition:transform .3s;
 }
-.nav-logo{
-  font-family:'JetBrains Mono',monospace;
-  font-size:.72rem;font-weight:500;
-  letter-spacing:.18em;text-transform:uppercase;
-}
-.nav-links{display:flex;align-items:center;gap:24px}
-.nav-links a{font-size:.68rem;color:var(--ink3);font-weight:400;letter-spacing:.03em;transition:color .2s}
-.nav-links a:hover{color:var(--ink)}
-.nav-cta{
-  padding:7px 18px;border:1px solid rgba(61,142,196,0.3);
-  color:var(--ocean-light)!important;font-weight:500!important;transition:all .3s!important;
-}
+.nav-logo{font-family:'JetBrains Mono',monospace;font-size:.72rem;font-weight:500;letter-spacing:.18em;text-transform:uppercase}
+.nav-right{display:flex;align-items:center;gap:24px}
+.nav-right a{font-size:.68rem;color:var(--ink3);letter-spacing:.03em;transition:color .2s}
+.nav-right a:hover{color:var(--ink)}
+.nav-cta{padding:7px 18px;border:1px solid rgba(61,142,196,0.3);color:var(--ocean-light)!important;font-weight:500!important;transition:all .3s!important}
 .nav-cta:hover{background:rgba(61,142,196,0.08);border-color:var(--ocean-light)}
 
 /* ═══ TICKER ═══ */
@@ -70,57 +60,35 @@ nav{
   border-bottom:1px solid rgba(255,255,255,0.03);
   overflow:hidden;display:flex;align-items:center;
 }
-.ticker-track{
-  display:flex;gap:48px;
-  animation:scroll-ticker 45s linear infinite;
-  white-space:nowrap;
-}
-.ticker-item{
-  font-family:'JetBrains Mono',monospace;font-size:.58rem;
-  color:var(--ink3);display:flex;align-items:center;gap:8px;flex-shrink:0;
-}
+.ticker-track{display:flex;gap:48px;animation:scroll-ticker 45s linear infinite;white-space:nowrap}
+.ticker-item{font-family:'JetBrains Mono',monospace;font-size:.58rem;color:var(--ink3);display:flex;align-items:center;gap:8px;flex-shrink:0}
 .ticker-item .name{color:var(--ink2)}
 .ticker-item .up{color:var(--green)}
 .ticker-item .down{color:var(--red)}
 @keyframes scroll-ticker{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
 
 /* ═══ SECTIONS ═══ */
-.scene{
+.s{
   min-height:100vh;display:flex;flex-direction:column;
   align-items:center;justify-content:center;
   text-align:center;position:relative;
   padding:100px 24px 80px;overflow:hidden;
 }
-.scene-compact{min-height:auto;padding:80px 24px}
+.s-short{min-height:auto;padding:80px 24px}
 
-/* ═══ TYPOGRAPHY ═══ */
-.headline{
+/* ═══ TYPE ═══ */
+.h1{
   font-family:'Cormorant Garamond',serif;
-  font-size:clamp(2.4rem,6.5vw,5rem);
-  font-weight:300;line-height:1.08;letter-spacing:-.02em;max-width:900px;
+  font-size:clamp(2.4rem,6.5vw,5rem);font-weight:300;
+  line-height:1.08;letter-spacing:-.02em;max-width:880px;
 }
-.headline em{font-style:italic;font-weight:400;color:var(--ocean-light)}
-.headline-sm{font-size:clamp(1.5rem,3.2vw,2.4rem)}
-.headline-md{font-size:clamp(1.7rem,3.8vw,2.8rem)}
-
-.subline{
-  font-size:clamp(.95rem,1.8vw,1.12rem);font-weight:300;
-  color:var(--ink2);line-height:1.9;max-width:560px;margin:0 auto;
-}
-
-.label{
-  font-family:'JetBrains Mono',monospace;
-  font-size:.6rem;font-weight:400;letter-spacing:.25em;
-  text-transform:uppercase;color:var(--ink3);margin-bottom:24px;
-}
-
-.question{
-  font-family:'Cormorant Garamond',serif;
-  font-size:clamp(1.3rem,2.8vw,2rem);
-  font-weight:300;font-style:italic;
-  color:var(--ink2);max-width:600px;
-  margin:0 auto;line-height:1.5;
-}
+.h2{font-family:'Cormorant Garamond',serif;font-size:clamp(1.6rem,3.5vw,2.6rem);font-weight:300;line-height:1.15;max-width:700px}
+.h1 em,.h2 em{font-style:italic;font-weight:400;color:var(--ocean-light)}
+.sub{font-size:clamp(.95rem,1.8vw,1.1rem);font-weight:300;color:var(--ink2);line-height:1.9;max-width:540px;margin:0 auto}
+.tag{font-family:'JetBrains Mono',monospace;font-size:.58rem;letter-spacing:.25em;text-transform:uppercase;color:var(--ink3);margin-bottom:24px}
+.q{font-family:'Cormorant Garamond',serif;font-size:clamp(1.3rem,2.8vw,2rem);font-weight:300;font-style:italic;color:var(--ink2);max-width:580px;margin:0 auto;line-height:1.5}
+.dim{color:var(--ink3)}
+.small{font-size:.82rem}
 
 /* ═══ REVEALS ═══ */
 .rv{opacity:0;transform:translateY(28px);transition:opacity 1s cubic-bezier(.16,1,.3,1),transform 1s cubic-bezier(.16,1,.3,1)}
@@ -128,11 +96,8 @@ nav{
 .d1{transition-delay:.15s}.d2{transition-delay:.3s}.d3{transition-delay:.45s}.d4{transition-delay:.6s}
 
 /* ═══ HERO ═══ */
-.scene-hero{
-  background:radial-gradient(ellipse 80% 60% at 50% 35%,rgba(26,74,110,0.15),transparent),var(--bg);
-  padding-top:130px;
-}
-.big-number{
+.hero{background:radial-gradient(ellipse 80% 60% at 50% 35%,rgba(26,74,110,0.15),transparent),var(--bg);padding-top:130px}
+.big-num{
   font-family:'JetBrains Mono',monospace;
   font-size:clamp(4rem,13vw,10rem);font-weight:500;
   line-height:.9;letter-spacing:-.04em;
@@ -140,106 +105,56 @@ nav{
   -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
   margin-bottom:8px;
 }
-.big-unit{
-  font-family:'JetBrains Mono',monospace;
-  font-size:clamp(.85rem,1.8vw,1.3rem);font-weight:300;
-  color:var(--ink3);letter-spacing:.1em;text-transform:uppercase;margin-bottom:40px;
-}
+.big-unit{font-family:'JetBrains Mono',monospace;font-size:clamp(.85rem,1.8vw,1.3rem);font-weight:300;color:var(--ink3);letter-spacing:.1em;text-transform:uppercase;margin-bottom:40px}
 
-/* ═══ EMOTION GRID ═══ */
-.emotion-grid{
+/* ═══ EMOTION ═══ */
+.emo-grid{
   display:grid;grid-template-columns:repeat(4,1fr);gap:1px;
-  max-width:580px;width:100%;margin:40px auto 0;
+  max-width:560px;width:100%;margin:36px auto 0;
   background:rgba(255,255,255,0.02);border-radius:6px;overflow:hidden;
 }
-@media(max-width:480px){.emotion-grid{grid-template-columns:repeat(2,1fr)}}
-.emotion-cell{padding:24px 14px;background:var(--bg2);text-align:center}
-.emotion-word{
-  font-family:'Cormorant Garamond',serif;
-  font-size:clamp(1.1rem,2vw,1.4rem);font-weight:400;font-style:italic;
-  color:var(--ink2);display:block;margin-bottom:3px;
-}
-.emotion-pct{font-family:'JetBrains Mono',monospace;font-size:.58rem;color:var(--ink3)}
+@media(max-width:480px){.emo-grid{grid-template-columns:repeat(2,1fr)}}
+.emo-cell{padding:22px 12px;background:var(--bg2);text-align:center}
+.emo-word{font-family:'Cormorant Garamond',serif;font-size:clamp(1rem,2vw,1.3rem);font-weight:400;font-style:italic;color:var(--ink2);display:block;margin-bottom:3px}
+.emo-desc{font-family:'JetBrains Mono',monospace;font-size:.55rem;color:var(--ink3)}
 
-/* ═══ STAT ROW ═══ */
-.stat-row{display:flex;gap:48px;justify-content:center;flex-wrap:wrap;margin-top:48px}
-.stat-item{text-align:center}
-.stat-num{
-  font-family:'JetBrains Mono',monospace;
-  font-size:clamp(1.3rem,2.8vw,1.8rem);font-weight:500;color:var(--ink);display:block;
+/* ═══ STATS ═══ */
+.stats{display:flex;gap:44px;justify-content:center;flex-wrap:wrap;margin-top:44px}
+.stat{text-align:center}
+.stat b{font-family:'JetBrains Mono',monospace;font-size:clamp(1.2rem,2.5vw,1.7rem);font-weight:500;color:var(--ink);display:block}
+.stat span{font-size:.6rem;color:var(--ink3);display:block;margin-top:3px}
+
+/* ═══ COMPARE ═══ */
+.compare{
+  display:grid;grid-template-columns:1fr auto 1fr;gap:20px;
+  max-width:560px;width:100%;margin:44px auto 0;align-items:center;
 }
-.stat-label{font-size:.62rem;color:var(--ink3);display:block;margin-top:4px}
+@media(max-width:480px){.compare{grid-template-columns:1fr;gap:14px}.compare-vs{display:none}}
+.compare-box{background:var(--bg2);border:1px solid rgba(255,255,255,0.03);border-radius:6px;padding:24px 18px;text-align:center}
+.compare-title{font-family:'JetBrains Mono',monospace;font-size:.55rem;letter-spacing:.12em;text-transform:uppercase;color:var(--ink3);margin-bottom:8px}
+.compare-num{font-family:'JetBrains Mono',monospace;font-size:clamp(1.6rem,3.5vw,2.4rem);font-weight:500;display:block;line-height:1;margin-bottom:6px}
+.compare-detail{font-size:.68rem;color:var(--ink3);line-height:1.6}
+.compare-vs{font-family:'Cormorant Garamond',serif;font-size:1rem;font-style:italic;color:var(--ink4)}
 
 /* ═══ DIVIDERS ═══ */
-.divider{width:60px;height:1px;background:linear-gradient(90deg,transparent,var(--ink4),transparent);margin:0 auto}
-.divider-glow{
-  width:100px;height:1px;
-  background:linear-gradient(90deg,transparent,var(--ocean-light),transparent);
-  margin:0 auto;box-shadow:0 0 20px var(--ocean-light),0 0 50px rgba(61,142,196,0.12);
-}
+.div-line{width:60px;height:1px;background:linear-gradient(90deg,transparent,var(--ink4),transparent);margin:0 auto}
+.div-glow{width:100px;height:1px;background:linear-gradient(90deg,transparent,var(--ocean-light),transparent);margin:0 auto;box-shadow:0 0 20px var(--ocean-light),0 0 50px rgba(61,142,196,0.12)}
 
-/* ═══ COST BAR ═══ */
-.cost-compare{
-  display:grid;grid-template-columns:1fr auto 1fr;gap:24px;
-  max-width:600px;width:100%;margin:48px auto 0;align-items:center;
-}
-@media(max-width:480px){
-  .cost-compare{grid-template-columns:1fr;gap:16px}
-  .cost-vs{display:none}
-}
-.cost-box{
-  background:var(--bg2);border:1px solid rgba(255,255,255,0.03);
-  border-radius:6px;padding:28px 20px;text-align:center;
-}
-.cost-title{
-  font-family:'JetBrains Mono',monospace;font-size:.58rem;
-  letter-spacing:.15em;text-transform:uppercase;color:var(--ink3);margin-bottom:10px;
-}
-.cost-fee{
-  font-family:'JetBrains Mono',monospace;
-  font-size:clamp(1.8rem,4vw,2.6rem);font-weight:500;display:block;line-height:1;margin-bottom:6px;
-}
-.cost-detail{font-size:.7rem;color:var(--ink3);line-height:1.6}
-.cost-vs{
-  font-family:'Cormorant Garamond',serif;font-size:1.1rem;
-  font-style:italic;color:var(--ink3);
-}
-
-/* ═══ GRID STATS ═══ */
-.grid-stats{
+/* ═══ GRID ═══ */
+.g4{
   display:grid;grid-template-columns:repeat(4,1fr);gap:1px;
-  max-width:680px;width:100%;margin:48px auto 0;
+  max-width:660px;width:100%;margin:44px auto 0;
   background:rgba(255,255,255,0.02);border-radius:6px;overflow:hidden;
 }
-@media(max-width:640px){.grid-stats{grid-template-columns:repeat(2,1fr)}}
-.grid-stat{background:var(--bg2);padding:24px 14px;text-align:center}
-.grid-stat-num{
-  font-family:'JetBrains Mono',monospace;
-  font-size:clamp(1.1rem,2.2vw,1.4rem);font-weight:500;
-  color:var(--ink);display:block;line-height:1;margin-bottom:5px;
-}
-.grid-stat-label{font-size:.58rem;color:var(--ink3)}
-
-/* ═══ MACHINE LIST ═══ */
-.machine-list{list-style:none;max-width:360px;margin:36px auto 0;text-align:left}
-.machine-list li{
-  font-family:'JetBrains Mono',monospace;font-size:clamp(.7rem,1vw,.8rem);
-  color:var(--ink3);padding:11px 0;
-  border-bottom:1px solid rgba(255,255,255,0.03);
-  display:flex;align-items:center;gap:10px;
-}
-.machine-list li::before{
-  content:'';width:5px;height:5px;border-radius:50%;
-  background:var(--ocean-light);flex-shrink:0;box-shadow:0 0 6px var(--ocean-light);
-}
+@media(max-width:640px){.g4{grid-template-columns:repeat(2,1fr)}}
+.g4-cell{background:var(--bg2);padding:22px 14px;text-align:center}
+.g4-num{font-family:'JetBrains Mono',monospace;font-size:clamp(1rem,2vw,1.3rem);font-weight:500;color:var(--ink);display:block;line-height:1;margin-bottom:5px}
+.g4-label{font-size:.55rem;color:var(--ink3)}
 
 /* ═══ ZERO ═══ */
 .scene-zero{background:var(--bg);position:relative}
-.scene-zero::before{
-  content:'';position:absolute;inset:0;
-  background:radial-gradient(circle at 50% 50%,rgba(61,142,196,0.04),transparent 60%);
-}
-.zero-number{
+.scene-zero::before{content:'';position:absolute;inset:0;background:radial-gradient(circle at 50% 50%,rgba(61,142,196,0.04),transparent 60%)}
+.zero-num{
   font-family:'JetBrains Mono',monospace;
   font-size:clamp(8rem,26vw,18rem);font-weight:500;
   line-height:.75;letter-spacing:-.06em;
@@ -247,85 +162,59 @@ nav{
   -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
   position:relative;
 }
-.zero-word{
-  font-family:'Cormorant Garamond',serif;
-  font-size:clamp(1.2rem,2.5vw,1.8rem);font-weight:300;
-  font-style:italic;color:var(--ink2);margin-top:8px;letter-spacing:.06em;
-}
+.zero-word{font-family:'Cormorant Garamond',serif;font-size:clamp(1.2rem,2.5vw,1.8rem);font-weight:300;font-style:italic;color:var(--ink2);margin-top:8px;letter-spacing:.06em}
 .zero-sub{font-size:.82rem;color:var(--ink3);font-weight:300;max-width:400px;margin:28px auto 0;line-height:1.9}
 
-/* ═══ TERMS ═══ */
-.terms-grid{
-  display:grid;grid-template-columns:repeat(4,1fr);gap:1px;
-  max-width:740px;width:100%;margin:0 auto;
-  background:rgba(255,255,255,0.02);border-radius:6px;overflow:hidden;
-}
-@media(max-width:640px){.terms-grid{grid-template-columns:repeat(2,1fr)}}
-.term-card{background:var(--bg2);padding:36px 18px;text-align:center}
-.term-num{
-  font-family:'JetBrains Mono',monospace;
-  font-size:clamp(1.8rem,4vw,2.8rem);font-weight:500;
-  color:var(--ink);display:block;line-height:1;margin-bottom:10px;
-}
-.term-label{font-size:.75rem;color:var(--ink2);font-weight:300;line-height:1.7}
-.term-sub{font-family:'JetBrains Mono',monospace;font-size:.52rem;color:var(--ink3);margin-top:10px;letter-spacing:.04em}
-
 /* ═══ DOOR ═══ */
-.scene-door{
-  background:radial-gradient(ellipse 50% 40% at 50% 50%,rgba(61,142,196,0.06),transparent),var(--bg);
-  min-height:80vh;
-}
-.door-cta{
+.door{background:radial-gradient(ellipse 50% 40% at 50% 50%,rgba(61,142,196,0.06),transparent),var(--bg);min-height:80vh}
+.door-btn{
   display:inline-flex;align-items:center;gap:12px;
   padding:18px 44px;border:1px solid rgba(61,142,196,0.3);
-  color:var(--ink);font-size:.85rem;font-weight:400;letter-spacing:.05em;
+  color:var(--ink);font-size:.85rem;letter-spacing:.05em;
   margin-top:44px;transition:all .6s cubic-bezier(.16,1,.3,1);
   position:relative;overflow:hidden;
 }
-.door-cta::before{
-  content:'';position:absolute;inset:0;
-  background:linear-gradient(135deg,rgba(61,142,196,0.1),transparent);
-  opacity:0;transition:opacity .6s;
-}
-.door-cta:hover{
-  border-color:var(--ocean-light);
-  box-shadow:0 0 40px rgba(61,142,196,0.12),0 0 80px rgba(61,142,196,0.04);
-  transform:translateY(-2px);
-}
-.door-cta:hover::before{opacity:1}
-.door-cta .arrow{transition:transform .4s cubic-bezier(.16,1,.3,1);font-size:1rem}
-.door-cta:hover .arrow{transform:translateX(4px)}
-
-.capacity{
+.door-btn::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(61,142,196,0.1),transparent);opacity:0;transition:opacity .6s}
+.door-btn:hover{border-color:var(--ocean-light);box-shadow:0 0 40px rgba(61,142,196,0.12);transform:translateY(-2px)}
+.door-btn:hover::before{opacity:1}
+.door-btn .arr{transition:transform .4s cubic-bezier(.16,1,.3,1)}
+.door-btn:hover .arr{transform:translateX(4px)}
+.cap{
   margin-top:24px;font-family:'JetBrains Mono',monospace;
-  font-size:.58rem;letter-spacing:.2em;text-transform:uppercase;
+  font-size:.56rem;letter-spacing:.2em;text-transform:uppercase;
   color:var(--ink3);display:flex;align-items:center;gap:10px;justify-content:center;
 }
-.capacity::before{
-  content:'';width:5px;height:5px;border-radius:50%;
-  background:var(--ocean-light);box-shadow:0 0 6px var(--ocean-light);
-  animation:pulse 2s ease-in-out infinite;
-}
+.cap::before{content:'';width:5px;height:5px;border-radius:50%;background:var(--ocean-light);box-shadow:0 0 6px var(--ocean-light);animation:pulse 2s ease-in-out infinite}
 @keyframes pulse{0%,100%{opacity:.4}50%{opacity:1}}
+
+/* ═══ HOW IT WORKS ═══ */
+.how-grid{
+  display:grid;grid-template-columns:repeat(3,1fr);gap:1px;
+  max-width:660px;width:100%;margin:44px auto 0;
+  background:rgba(255,255,255,0.02);border-radius:6px;overflow:hidden;
+}
+@media(max-width:640px){.how-grid{grid-template-columns:1fr}}
+.how-step{background:var(--bg2);padding:32px 20px;text-align:center}
+.how-num{font-family:'JetBrains Mono',monospace;font-size:.5rem;color:var(--ocean-light);letter-spacing:.15em;margin-bottom:10px;display:block}
+.how-title{font-family:'Cormorant Garamond',serif;font-size:1.1rem;font-weight:400;color:var(--ink);margin-bottom:6px}
+.how-desc{font-size:.72rem;color:var(--ink3);line-height:1.6}
 
 /* ═══ FOOTER ═══ */
 footer{padding:36px 24px;text-align:center;border-top:1px solid rgba(255,255,255,0.03)}
 .ft-nav{display:flex;gap:20px;justify-content:center;margin-bottom:18px;flex-wrap:wrap}
-.ft-nav a{font-size:.62rem;color:var(--ink3);transition:color .2s}
+.ft-nav a{font-size:.6rem;color:var(--ink3);transition:color .2s}
 .ft-nav a:hover{color:var(--ink)}
-.ft-legal{font-size:.52rem;color:var(--ink4);line-height:2;max-width:580px;margin:0 auto 10px}
-.ft-copy{font-size:.5rem;color:var(--ink4)}
+.ft-legal{font-size:.5rem;color:var(--ink4);line-height:2;max-width:560px;margin:0 auto 10px}
+.ft-copy{font-size:.48rem;color:var(--ink4)}
 
-/* ═══ PARTICLES ═══ */
 .particle{position:fixed;width:2px;height:2px;border-radius:50%;background:var(--ocean-light);opacity:0;pointer-events:none;z-index:1}
 @keyframes drift{0%{opacity:0;transform:translateY(0)}15%{opacity:.2}85%{opacity:.2}100%{opacity:0;transform:translateY(-100vh)}}
 
-/* ═══ RESPONSIVE ═══ */
 @media(max-width:480px){
   nav{padding:0 16px}
-  .nav-links a:not(.nav-cta){display:none}
-  .scene{padding:80px 20px 60px}
-  .stat-row{gap:20px}
+  .nav-right a:not(.nav-cta){display:none}
+  .s{padding:80px 20px 60px}
+  .stats{gap:20px}
 }
 ::-webkit-scrollbar{width:3px}
 ::-webkit-scrollbar-track{background:var(--bg)}
@@ -334,18 +223,15 @@ footer{padding:36px 24px;text-align:center;border-top:1px solid rgba(255,255,255
 </head>
 <body>
 
-<!-- ═══ NAV ═══ -->
 <nav>
   <span class="nav-logo">Prism</span>
-  <div class="nav-links">
-    <a href="#system">How</a>
+  <div class="nav-right">
+    <a href="#how">How It Works</a>
     <a href="#proof">Proof</a>
-    <a href="#terms">Terms</a>
-    <a href="mailto:info@prism.fund" class="nav-cta">Request Access</a>
+    <a href="mailto:info@prism.fund" class="nav-cta">Get In</a>
   </div>
 </nav>
 
-<!-- ═══ TICKER ═══ -->
 <div class="ticker">
   <div class="ticker-track">
     <span class="ticker-item"><span class="name">S&P 500</span> 5,932 <span class="up">+0.43%</span></span>
@@ -354,295 +240,228 @@ footer{padding:36px 24px;text-align:center;border-top:1px solid rgba(255,255,255
     <span class="ticker-item"><span class="name">EUR/USD</span> 1.1362 <span class="down">&minus;0.12%</span></span>
     <span class="ticker-item"><span class="name">Gold</span> $3,348 <span class="up">+0.34%</span></span>
     <span class="ticker-item"><span class="name">VIX</span> 18.2 <span class="down">&minus;3.1%</span></span>
-    <span class="ticker-item"><span class="name">10Y Yield</span> 4.54% <span class="up">+0.02</span></span>
-    <span class="ticker-item"><span class="name">Crude Oil</span> $61.53 <span class="down">&minus;0.87%</span></span>
+    <span class="ticker-item"><span class="name">10Y</span> 4.54% <span class="up">+0.02</span></span>
+    <span class="ticker-item"><span class="name">Crude</span> $61.53 <span class="down">&minus;0.87%</span></span>
     <span class="ticker-item"><span class="name">S&P 500</span> 5,932 <span class="up">+0.43%</span></span>
     <span class="ticker-item"><span class="name">NASDAQ</span> 19,148 <span class="up">+0.68%</span></span>
     <span class="ticker-item"><span class="name">BTC</span> $108,420 <span class="up">+2.1%</span></span>
     <span class="ticker-item"><span class="name">EUR/USD</span> 1.1362 <span class="down">&minus;0.12%</span></span>
     <span class="ticker-item"><span class="name">Gold</span> $3,348 <span class="up">+0.34%</span></span>
     <span class="ticker-item"><span class="name">VIX</span> 18.2 <span class="down">&minus;3.1%</span></span>
-    <span class="ticker-item"><span class="name">10Y Yield</span> 4.54% <span class="up">+0.02</span></span>
-    <span class="ticker-item"><span class="name">Crude Oil</span> $61.53 <span class="down">&minus;0.87%</span></span>
+    <span class="ticker-item"><span class="name">10Y</span> 4.54% <span class="up">+0.02</span></span>
+    <span class="ticker-item"><span class="name">Crude</span> $61.53 <span class="down">&minus;0.87%</span></span>
   </div>
 </div>
 
 <div id="particles"></div>
 
-<!-- ═══════════════════════════════════════════════════ -->
-<!-- 1. THE MONEY IS ALREADY THERE                      -->
-<!-- They believe: markets are massive, money is real   -->
-<!-- ═══════════════════════════════════════════════════ -->
-<section class="scene scene-hero">
-  <div class="label rv">Did you know</div>
-  <div class="big-number rv d1" id="counter">$7.5</div>
+<!-- ═══════════════════════════════════════ -->
+<!-- 1. THE MONEY IS THERE                  -->
+<!-- They know: markets are massive         -->
+<!-- ═══════════════════════════════════════ -->
+<section class="s hero">
+  <div class="tag rv">Did you know</div>
+  <div class="big-num rv d1" id="counter">$7.5</div>
   <div class="big-unit rv d2">trillion flows through global markets every day</div>
-  <p class="subline rv d3">Stocks, bonds, currencies, crypto, commodities. Right now, as you read this, trillions are moving. A river that never stops.</p>
+  <p class="sub rv d3">Stocks, bonds, currencies, crypto, commodities. Right now, as you read this, trillions are moving.</p>
 </section>
 
-<!-- ═══════════════════════════════════════════════════ -->
-<!-- 2. MOST OF IT MOVES ON EMOTION                     -->
-<!-- They believe: people trade emotionally, it's dumb  -->
-<!-- ═══════════════════════════════════════════════════ -->
-<section class="scene">
-  <div class="label rv">What moves most of it?</div>
-  <h2 class="headline rv d1"><em>Emotion.</em></h2>
-  <div class="emotion-grid rv d2">
-    <div class="emotion-cell">
-      <span class="emotion-word">Fear</span>
-      <span class="emotion-pct">tends to sell the bottom</span>
-    </div>
-    <div class="emotion-cell">
-      <span class="emotion-word">Hope</span>
-      <span class="emotion-pct">tends to buy the top</span>
-    </div>
-    <div class="emotion-cell">
-      <span class="emotion-word">Panic</span>
-      <span class="emotion-pct">tends to create the crash</span>
-    </div>
-    <div class="emotion-cell">
-      <span class="emotion-word">Opinion</span>
-      <span class="emotion-pct">tends to move the herd</span>
-    </div>
+<!-- ═══════════════════════════════════════ -->
+<!-- 2. EMOTION MOVES IT                    -->
+<!-- They know: people trade on feelings    -->
+<!-- ═══════════════════════════════════════ -->
+<section class="s">
+  <div class="tag rv">What moves most of it?</div>
+  <h2 class="h1 rv d1"><em>Emotion.</em></h2>
+  <div class="emo-grid rv d2">
+    <div class="emo-cell"><span class="emo-word">Fear</span><span class="emo-desc">sells the bottom</span></div>
+    <div class="emo-cell"><span class="emo-word">Hope</span><span class="emo-desc">buys the top</span></div>
+    <div class="emo-cell"><span class="emo-word">Panic</span><span class="emo-desc">creates the crash</span></div>
+    <div class="emo-cell"><span class="emo-word">Opinion</span><span class="emo-desc">moves the herd</span></div>
   </div>
-  <p class="subline rv d3" style="margin-top:36px">Every emotional dollar creates a wave.<br>What does every wave create?</p>
+  <p class="sub rv d3" style="margin-top:36px">Every emotional dollar creates a wave.<br>What does every wave create?</p>
 </section>
 
-<!-- ═══════════════════════════════════════════════════ -->
-<!-- 3. YOU CAN'T BEAT A MACHINE WITH FEELINGS          -->
-<!-- They believe: AI is better at patterns than humans -->
-<!-- ═══════════════════════════════════════════════════ -->
-<section class="scene">
-  <div class="label rv">A question worth asking</div>
-  <p class="question rv d1">Can emotion outperform a system<br>that doesn't feel?</p>
-  <div class="divider rv d2" style="margin:48px auto"></div>
-  <p class="subline rv d3">AI diagnoses disease better than doctors. It drives cars. It writes code. It beats grandmasters at chess without being taught the rules. In every domain where pattern recognition matters, machines have already won.</p>
-  <p class="subline rv d4" style="margin-top:24px;color:var(--ink3);font-size:.85rem">Markets are the largest pattern recognition problem on earth.</p>
+<!-- ═══════════════════════════════════════ -->
+<!-- 3. MACHINES BEAT FEELINGS              -->
+<!-- They know: AI is better at patterns    -->
+<!-- ═══════════════════════════════════════ -->
+<section class="s">
+  <div class="tag rv">A question</div>
+  <p class="q rv d1">Can emotion outperform a system<br>that doesn't feel?</p>
+  <div class="div-line rv d2" style="margin:44px auto"></div>
+  <p class="sub rv d3">AI diagnoses disease better than doctors. It drives cars. It beats grandmasters without being taught the rules. In every domain where pattern recognition matters, machines already won.</p>
+  <p class="sub dim small rv d4" style="margin-top:20px">Markets are the largest pattern recognition problem on earth.</p>
 </section>
 
-<!-- ═══════════════════════════════════════════════════ -->
-<!-- 4. IF 90% LOSE, SOMEONE'S WINNING BIG              -->
-<!-- They believe: trading is zero-sum at the margin    -->
-<!-- ═══════════════════════════════════════════════════ -->
-<section class="scene">
-  <div class="label rv">The math nobody talks about</div>
-  <h2 class="headline headline-md rv d1">90% of day traders<br><em>lose money.</em></h2>
-  <p class="question rv d2" style="margin-top:36px">Where does that money go?</p>
-  <p class="subline rv d3" style="margin-top:32px">It doesn't disappear. Every dollar lost by an emotional trader is gained by whoever was on the other side of that trade. The money flows from those who feel to those who compute.</p>
+<!-- ═══════════════════════════════════════ -->
+<!-- 4. 90% LOSE — WHERE DOES IT GO?        -->
+<!-- They know: someone's winning big        -->
+<!-- ═══════════════════════════════════════ -->
+<section class="s">
+  <div class="tag rv">The math</div>
+  <h2 class="h1 rv d1" style="font-size:clamp(1.8rem,4vw,3rem)">90% of day traders<br><em>lose money.</em></h2>
+  <p class="q rv d2" style="margin-top:32px">Where does that money go?</p>
+  <p class="sub rv d3" style="margin-top:28px">It doesn't disappear. Every dollar lost by someone trading on feeling is gained by whoever was on the other side. The money flows from those who feel to those who compute.</p>
 </section>
 
-<!-- ═══════════════════════════════════════════════════ -->
-<!-- 5. THE WATER MOVES ON ITS OWN                      -->
-<!-- They believe: you can't force markets              -->
-<!-- ═══════════════════════════════════════════════════ -->
-<section class="scene" style="background:radial-gradient(ellipse 70% 50% at 50% 60%,rgba(26,74,110,0.08),transparent),var(--bg)">
-  <h2 class="headline rv">The water doesn't move<br><em>the way you want.</em></h2>
-  <p class="subline rv d1" style="margin-top:32px">It moves the way it moves. You don't create waves. You don't predict them. You don't fight them. They form on their own &mdash; born from trillions of dollars of human emotion, every second of every day.</p>
-  <div class="divider rv d2" style="margin:48px auto"></div>
-  <p class="subline rv d3" style="color:var(--ink3);font-size:.85rem">The only question is whether you can read the water.</p>
+<!-- ═══════════════════════════════════════ -->
+<!-- 5. YOU CAN'T FORCE THE WATER           -->
+<!-- They know: markets don't obey you      -->
+<!-- ═══════════════════════════════════════ -->
+<section class="s" style="background:radial-gradient(ellipse 70% 50% at 50% 55%,rgba(26,74,110,0.08),transparent),var(--bg)">
+  <h2 class="h1 rv">The water doesn't care<br><em>what you think.</em></h2>
+  <p class="sub rv d1" style="margin-top:28px">It moves the way it moves. You don't create waves. You don't predict them. You don't fight them. They form on their own &mdash; trillions of dollars of human emotion, every second.</p>
+  <div class="div-line rv d2" style="margin:44px auto"></div>
+  <p class="sub dim small rv d3">But if you watch long enough, you start to see them forming.</p>
 </section>
 
-<!-- ═══════════════════════════════════════════════════ -->
-<!-- 6. A SYSTEM THAT READS EVERY OCEAN AT ONCE         -->
-<!-- They already accepted AI beats humans (section 3)  -->
-<!-- ═══════════════════════════════════════════════════ -->
-<section class="scene" id="system" style="background:radial-gradient(ellipse 60% 40% at 50% 50%,rgba(61,142,196,0.06),transparent),var(--bg)">
-  <div class="label rv">What if something already existed that could</div>
-  <h2 class="headline rv d1">read <em>every sea</em><br>at once.</h2>
-  <p class="subline rv d2" style="margin-top:32px">Not one market. Not one thesis. Not one model. A system watching every ocean &mdash; reading the water before the wave breaks.</p>
-  <div class="stat-row rv d3">
-    <div class="stat-item">
-      <span class="stat-num">2.29M</span>
-      <span class="stat-label">patterns scanned nightly</span>
-    </div>
-    <div class="stat-item">
-      <span class="stat-num">3,792</span>
-      <span class="stat-label">instruments watched</span>
-    </div>
-    <div class="stat-item">
-      <span class="stat-num">11</span>
-      <span class="stat-label">independent engines</span>
-    </div>
+<!-- ═══════════════════════════════════════ -->
+<!-- 6. THE MACHINE READS IT ALL            -->
+<!-- Pre-loaded by section 3                -->
+<!-- ═══════════════════════════════════════ -->
+<section class="s" id="how" style="background:radial-gradient(ellipse 60% 40% at 50% 50%,rgba(61,142,196,0.06),transparent),var(--bg)">
+  <div class="tag rv">What if something already existed that could</div>
+  <h2 class="h1 rv d1">read <em>every sea</em><br>at once.</h2>
+  <p class="sub rv d2" style="margin-top:28px">Not one market. Not one thesis. Not one model. A system watching every ocean &mdash; reading the water before the wave breaks.</p>
+  <div class="stats rv d3">
+    <div class="stat"><b>2.29M</b><span>patterns scanned nightly</span></div>
+    <div class="stat"><b>3,792</b><span>instruments watched</span></div>
+    <div class="stat"><b>11</b><span>independent engines</span></div>
   </div>
-  <div class="stat-row rv d4" style="margin-top:32px">
-    <div class="stat-item">
-      <span class="stat-num" style="color:var(--ocean-light)">+2.8%</span>
-      <span class="stat-label">mean reversion engine<br>COVID worst 23 days</span>
+  <div class="stats rv d4" style="margin-top:28px">
+    <div class="stat"><b style="color:var(--ocean-light)">+2.8%</b><span>mean reversion engine<br>COVID worst 23 days</span></div>
+    <div class="stat"><b style="color:var(--ocean-light)">+7.3%</b><span>portfolio return<br>2022 bear market</span></div>
+    <div class="stat"><b style="color:var(--ink3)">&minus;34%</b><span>S&amp;P 500<br>same period</span></div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════ -->
+<!-- 7. PEOPLE ARE THE OVERHEAD             -->
+<!-- They know: they've paid for nothing    -->
+<!-- ═══════════════════════════════════════ -->
+<section class="s s-short">
+  <div class="tag rv">An honest comparison</div>
+  <p class="q rv d1">How much of your return goes to paying<br>for people, offices, and opinions?</p>
+  <div class="compare rv d2">
+    <div class="compare-box">
+      <div class="compare-title">Traditional</div>
+      <span class="compare-num" style="color:var(--red)">2%</span>
+      <div class="compare-detail">Hundreds of employees. Offices. Analysts.<br>You pay whether they perform or not.</div>
     </div>
-    <div class="stat-item">
-      <span class="stat-num" style="color:var(--ocean-light)">+7.3%</span>
-      <span class="stat-label">portfolio return<br>2022 bear market</span>
-    </div>
-    <div class="stat-item">
-      <span class="stat-num" style="color:var(--ink3)">&minus;34%</span>
-      <span class="stat-label">S&amp;P 500<br>same period</span>
+    <div class="compare-vs">vs</div>
+    <div class="compare-box">
+      <div class="compare-title">The machine</div>
+      <span class="compare-num" style="color:var(--ocean-light)">0%</span>
+      <div class="compare-detail">Zero employees. Zero offices. Zero opinions.<br>You pay nothing unless you profit.</div>
     </div>
   </div>
 </section>
 
-<!-- ═══════════════════════════════════════════════════ -->
-<!-- 7. PEOPLE ARE EXPENSIVE                            -->
-<!-- They believe: they've paid 2% fees for nothing     -->
-<!-- ═══════════════════════════════════════════════════ -->
-<section class="scene scene-compact">
-  <div class="label rv">A question about traditional funds</div>
-  <p class="question rv d1">How much of your return goes to paying<br>for people, offices, and opinions?</p>
-  <div class="cost-compare rv d2">
-    <div class="cost-box">
-      <div class="cost-title">Traditional fund</div>
-      <span class="cost-fee" style="color:var(--red)">2%</span>
-      <div class="cost-detail">Management fee. Hundreds of employees.<br>Offices. Analysts. Bonuses.<br>You pay whether they perform or not.</div>
-    </div>
-    <div class="cost-vs">vs</div>
-    <div class="cost-box">
-      <div class="cost-title">A machine</div>
-      <span class="cost-fee" style="color:var(--ocean-light)">0%</span>
-      <div class="cost-detail">Management fee. Zero employees.<br>Zero offices. Zero opinions.<br>You pay nothing unless you profit.</div>
-    </div>
-  </div>
-</section>
-
-<!-- ═══════════════════════════════════════════════════ -->
-<!-- THE ZERO — the big emotional moment                -->
-<!-- ═══════════════════════════════════════════════════ -->
-<section class="scene scene-zero">
-  <div class="zero-number rv">0<span style="font-size:.6em">%</span></div>
+<!-- ═══════════════════════════════════════ -->
+<!-- THE ZERO                               -->
+<!-- ═══════════════════════════════════════ -->
+<section class="s scene-zero">
+  <div class="zero-num rv">0<span style="font-size:.6em">%</span></div>
   <div class="zero-word rv d1">emotion in every trade.</div>
-  <p class="zero-sub rv d2">Every entry. Every exit. Every allocation. Calculated, executed, and settled by math. The machine doesn't feel fear. It doesn't feel hope. It reads the water and moves.</p>
-  <div class="divider-glow rv d3" style="margin-top:44px"></div>
+  <p class="zero-sub rv d2">Every entry. Every exit. Every allocation. Math. The machine doesn't feel fear. It doesn't feel hope. It reads the water and moves.</p>
+  <div class="div-glow rv d3" style="margin-top:44px"></div>
 </section>
 
-<!-- ═══════════════════════════════════════════════════ -->
-<!-- PROOF — the graveyard                              -->
-<!-- ═══════════════════════════════════════════════════ -->
-<section class="scene scene-compact" id="proof">
-  <div class="label rv">What gets left behind</div>
-  <h2 class="headline headline-sm rv d1">158 strategies entered the water.<br><em>40+ never came back.</em></h2>
-  <p class="subline rv d2" style="margin-top:20px">Every failure published. Every dead end documented. The complete graveyard is open to anyone who asks.</p>
-  <div class="grid-stats rv d3">
-    <div class="grid-stat">
-      <span class="grid-stat-num">158</span>
-      <span class="grid-stat-label">strategies tested</span>
+<!-- ═══════════════════════════════════════ -->
+<!-- HOW IT WORKS — dead simple              -->
+<!-- ═══════════════════════════════════════ -->
+<section class="s s-short">
+  <div class="tag rv">How it works</div>
+  <h2 class="h2 rv d1">You park your money.<br><em>The machine reads the water.</em></h2>
+  <div class="how-grid rv d2">
+    <div class="how-step">
+      <span class="how-num">01</span>
+      <div class="how-title">Park</div>
+      <div class="how-desc">Your capital enters the vessel. Alongside the founder's own money. Same water.</div>
     </div>
-    <div class="grid-stat">
-      <span class="grid-stat-num">40+</span>
-      <span class="grid-stat-label">killed &amp; published</span>
+    <div class="how-step">
+      <span class="how-num">02</span>
+      <div class="how-title">The machine runs</div>
+      <div class="how-desc">11 engines scan every market, every night. Capital flows to wherever the wave is forming. Autonomous. 24/7.</div>
     </div>
-    <div class="grid-stat">
-      <span class="grid-stat-num">98.9M</span>
-      <span class="grid-stat-label">signal rows analyzed</span>
-    </div>
-    <div class="grid-stat">
-      <span class="grid-stat-num">16yr</span>
-      <span class="grid-stat-label">walk-forward data</span>
-    </div>
-  </div>
-  <p class="subline rv d4" style="margin-top:28px;color:var(--ink3);font-size:.78rem">What does it tell you about a system<br>that shows you everything that failed?</p>
-</section>
-
-<!-- ═══════════════════════════════════════════════════ -->
-<!-- TERMS                                              -->
-<!-- ═══════════════════════════════════════════════════ -->
-<section class="scene scene-compact" id="terms">
-  <div class="label rv">The terms</div>
-  <div class="terms-grid">
-    <div class="term-card rv d1">
-      <span class="term-num">0%</span>
-      <span class="term-label">Management fee.<br>Zero overhead.</span>
-      <span class="term-sub">you pay nothing to sit at the table</span>
-    </div>
-    <div class="term-card rv d2">
-      <span class="term-num">20%</span>
-      <span class="term-label">Of net profits.<br>Paid quarterly.</span>
-      <span class="term-sub">only when you make money</span>
-    </div>
-    <div class="term-card rv d3">
-      <span class="term-num" style="font-size:clamp(1rem,2vw,1.3rem);color:var(--ocean-light)">Limited</span>
-      <span class="term-label">Founding allocations.<br>Then the water fills.</span>
-      <span class="term-sub">performance over scale</span>
-    </div>
-    <div class="term-card rv d4">
-      <span class="term-num">100%</span>
-      <span class="term-label">Founder's capital<br>alongside yours.</span>
-      <span class="term-sub">same water, same waves</span>
+    <div class="how-step">
+      <span class="how-num">03</span>
+      <div class="how-title">You live your life</div>
+      <div class="how-desc">Quarterly payouts. Full transparency. You don't watch the water &mdash; the machine does that.</div>
     </div>
   </div>
 </section>
 
-<!-- ═══════════════════════════════════════════════════ -->
-<!-- THE DOOR                                           -->
-<!-- ═══════════════════════════════════════════════════ -->
-<section class="scene scene-door">
-  <h2 class="headline headline-md rv">If you can read the water,<br><em>the door is open.</em></h2>
-  <a href="mailto:info@prism.fund" class="door-cta rv d1">
-    Enter <span class="arrow">&rarr;</span>
+<!-- ═══════════════════════════════════════ -->
+<!-- PROOF                                  -->
+<!-- ═══════════════════════════════════════ -->
+<section class="s s-short" id="proof">
+  <div class="tag rv">What gets left behind</div>
+  <h2 class="h2 rv d1">158 strategies entered the water.<br><em>40+ never came back.</em></h2>
+  <p class="sub rv d2" style="margin-top:18px">Every failure published. Every dead end documented. The complete graveyard is open to anyone who asks.</p>
+  <div class="g4 rv d3">
+    <div class="g4-cell"><span class="g4-num">158</span><span class="g4-label">strategies tested</span></div>
+    <div class="g4-cell"><span class="g4-num">40+</span><span class="g4-label">killed &amp; published</span></div>
+    <div class="g4-cell"><span class="g4-num">98.9M</span><span class="g4-label">signal rows analyzed</span></div>
+    <div class="g4-cell"><span class="g4-num">16yr</span><span class="g4-label">walk-forward data</span></div>
+  </div>
+  <p class="sub dim small rv d4" style="margin-top:24px">What does it tell you about a system<br>that shows you everything that failed?</p>
+</section>
+
+<!-- ═══════════════════════════════════════ -->
+<!-- THE DEAL — not "terms"                 -->
+<!-- ═══════════════════════════════════════ -->
+<section class="s s-short">
+  <div class="tag rv">The deal</div>
+  <div class="g4" style="max-width:720px">
+    <div class="g4-cell rv d1" style="padding:32px 16px">
+      <span class="g4-num" style="font-size:clamp(1.8rem,4vw,2.6rem)">0%</span>
+      <span class="g4-label">You pay nothing to park<br>your money here</span>
+    </div>
+    <div class="g4-cell rv d2" style="padding:32px 16px">
+      <span class="g4-num" style="font-size:clamp(1.8rem,4vw,2.6rem)">20%</span>
+      <span class="g4-label">Of profits. Quarterly.<br>Only when you make money</span>
+    </div>
+    <div class="g4-cell rv d3" style="padding:32px 16px">
+      <span class="g4-num" style="font-size:clamp(.9rem,1.8vw,1.2rem);color:var(--ocean-light)">Limited</span>
+      <span class="g4-label">Spots are filling.<br>Then the water fills.</span>
+    </div>
+    <div class="g4-cell rv d4" style="padding:32px 16px">
+      <span class="g4-num" style="font-size:clamp(1.8rem,4vw,2.6rem)">100%</span>
+      <span class="g4-label">Founder's money in<br>the same vessel</span>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════ -->
+<!-- THE DOOR                               -->
+<!-- ═══════════════════════════════════════ -->
+<section class="s door">
+  <h2 class="h2 rv">If you can read the water,<br><em>the door is open.</em></h2>
+  <a href="mailto:info@prism.fund" class="door-btn rv d1">
+    Get in <span class="arr">&rarr;</span>
   </a>
-  <div class="capacity rv d2">
-    <span>Founding allocations now open</span>
-  </div>
+  <div class="cap rv d2"><span>Spots filling now</span></div>
 </section>
 
-<!-- ═══ FOOTER ═══ -->
 <footer>
   <div class="ft-nav">
-    <a href="#system">How It Works</a>
+    <a href="#how">How It Works</a>
     <a href="#proof">Proof</a>
-    <a href="#terms">Terms</a>
     <a href="mailto:info@prism.fund">Contact</a>
   </div>
-  <p class="ft-legal">Past performance is not indicative of future results. This does not constitute an offer to sell or solicitation of an offer to buy securities. All investments involve risk, including loss of principal. Performance figures based on walk-forward out-of-sample testing. Limited to accredited investors. Prism is an emerging investment manager.</p>
-  <p class="ft-copy">&copy; 2026 Prism &middot; Tangier, Morocco &middot; info@prism.fund</p>
+  <p class="ft-legal">Past performance is not indicative of future results. This does not constitute an offer to sell or solicitation of an offer to buy securities. All investments involve risk, including loss of principal. Performance figures based on walk-forward out-of-sample testing. Limited to accredited investors.</p>
+  <p class="ft-copy">&copy; 2026 Prism &middot; Tangier &middot; info@prism.fund</p>
 </footer>
 
 <script>
-const ob = new IntersectionObserver(e => {
-  e.forEach(x => { if (x.isIntersecting) x.target.classList.add('v'); });
-}, { threshold: 0.08, rootMargin: '0px 0px -50px 0px' });
-document.querySelectorAll('.rv').forEach(el => ob.observe(el));
-
-// particles
-(function(){
-  const c = document.getElementById('particles');
-  for (let i = 0; i < 10; i++) {
-    const p = document.createElement('div');
-    p.className = 'particle';
-    p.style.left = Math.random()*100+'%';
-    p.style.top = Math.random()*100+'%';
-    p.style.animation = `drift ${14+Math.random()*18}s linear ${Math.random()*12}s infinite`;
-    c.appendChild(p);
-  }
-})();
-
-// counter
-(function(){
-  const el = document.getElementById('counter');
-  let done = false;
-  const cob = new IntersectionObserver(e => {
-    if (e[0].isIntersecting && !done) {
-      done = true;
-      const end=7.5, dur=2000, t0=performance.now();
-      (function tick(now){
-        const p=Math.min((now-t0)/dur,1);
-        el.textContent='$'+(p*(2-p)*end).toFixed(1); // ease out quad
-        if(p<1)requestAnimationFrame(tick);
-      })(t0);
-    }
-  }, { threshold: 0.5 });
-  cob.observe(el);
-})();
-
-// nav hide on scroll down
-let lastY=0;
-const nav=document.querySelector('nav');
-const ticker=document.querySelector('.ticker');
-window.addEventListener('scroll',()=>{
-  const y=window.scrollY;
-  const hide=y>200&&y>lastY;
-  nav.style.transform=hide?'translateY(-100%)':'translateY(0)';
-  ticker.style.transform=hide?'translateY(-82px)':'translateY(0)';
-  ticker.style.transition='transform .3s';
-  lastY=y;
-},{passive:true});
+const ob=new IntersectionObserver(e=>{e.forEach(x=>{if(x.isIntersecting)x.target.classList.add('v')})},{threshold:.08,rootMargin:'0px 0px -50px 0px'});
+document.querySelectorAll('.rv').forEach(el=>ob.observe(el));
+(function(){const c=document.getElementById('particles');for(let i=0;i<10;i++){const p=document.createElement('div');p.className='particle';p.style.left=Math.random()*100+'%';p.style.top=Math.random()*100+'%';p.style.animation=`drift ${14+Math.random()*18}s linear ${Math.random()*12}s infinite`;c.appendChild(p)}})();
+(function(){const el=document.getElementById('counter');let done=false;const cob=new IntersectionObserver(e=>{if(e[0].isIntersecting&&!done){done=true;const end=7.5,dur=2000,t0=performance.now();(function tick(now){const p=Math.min((now-t0)/dur,1);el.textContent='$'+(p*(2-p)*end).toFixed(1);if(p<1)requestAnimationFrame(tick)})(t0)}},{threshold:.5});cob.observe(el)})();
+let lastY=0;const nav=document.querySelector('nav'),tk=document.querySelector('.ticker');
+window.addEventListener('scroll',()=>{const y=window.scrollY,hide=y>200&&y>lastY;nav.style.transform=hide?'translateY(-100%)':'translateY(0)';tk.style.transform=hide?'translateY(-82px)':'translateY(0)';tk.style.transition='transform .3s';lastY=y},{passive:true});
 </script>
 </body>
 </html>
