@@ -6,214 +6,208 @@
 <title>Prism</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=Space+Grotesk:wght@300;400;500;600;700&family=Familjen+Grotesk:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&family=Outfit:wght@200;300;400;500;600&display=swap" rel="stylesheet">
 <style>
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
 :root{
-  --bg:#f5f4ef;
-  --bg2:#eae9e4;
-  --ink:#1a1a18;
-  --ink2:#555550;
-  --ink3:#999994;
-  --blue:#2a6f9e;
-  --green:#3a8a5c;
-  --red:#b85454;
-  --dark:#1a1e24;
-  --dark2:#22262e;
+  --bg:#faf9f6;
+  --bg2:#f0efeb;
+  --ink:#141412;
+  --ink2:#484844;
+  --ink3:#929289;
+  --accent:#1e6b8a;
+  --green:#2d8659;
+  --red:#b84e4e;
+  --dark:#141618;
 }
 html{scroll-behavior:smooth}
-body{font-family:'Space Grotesk',sans-serif;background:var(--bg);color:var(--ink);-webkit-font-smoothing:antialiased;overflow-x:hidden}
+body{font-family:'Outfit',sans-serif;background:var(--bg);color:var(--ink);-webkit-font-smoothing:antialiased;overflow-x:hidden}
 a{color:inherit;text-decoration:none}
 
-/* ═══ NAV ═══ */
 nav{
   position:fixed;top:0;left:0;right:0;z-index:100;
-  padding:0 clamp(20px,4vw,48px);height:60px;
+  padding:0 clamp(24px,5vw,56px);height:64px;
   display:flex;align-items:center;justify-content:space-between;
-  background:rgba(245,244,239,0.92);
-  backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);
-  border-bottom:1px solid rgba(0,0,0,0.06);transition:transform .3s;
+  background:rgba(250,249,246,0.92);
+  backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);
+  border-bottom:1px solid rgba(0,0,0,0.04);transition:transform .3s;
 }
-.logo{font-family:'Syne',sans-serif;font-size:.95rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase}
+.logo{font-family:'Outfit',sans-serif;font-size:1rem;font-weight:600;letter-spacing:.15em;text-transform:uppercase}
 .nav-r{display:flex;align-items:center;gap:32px}
-.nav-r a{font-size:.85rem;color:var(--ink3);transition:color .2s}
+.nav-r a{font-size:.9rem;color:var(--ink3);font-weight:400;transition:color .2s}
 .nav-r a:hover{color:var(--ink)}
-.nav-cta{padding:10px 28px;background:var(--ink);color:var(--bg)!important;border-radius:6px;font-weight:500!important;transition:transform .2s!important}
-.nav-cta:hover{transform:translateY(-1px)}
+.nav-cta{padding:10px 28px;background:var(--ink);color:var(--bg)!important;border-radius:100px;font-weight:500!important;transition:all .25s!important}
+.nav-cta:hover{transform:scale(1.03)}
 
-/* ticker removed */
-
-/* ═══ SECTIONS ═══ */
 .s{
   min-height:100vh;display:flex;flex-direction:column;
   align-items:center;justify-content:center;
   text-align:center;position:relative;
-  padding:160px clamp(24px,5vw,64px) 120px;
+  padding:160px clamp(28px,6vw,80px) 120px;
 }
-.s-half{min-height:auto;padding:120px clamp(24px,5vw,64px)}
-.s-dark{background:var(--dark);color:var(--bg)}
+.s-half{min-height:auto;padding:120px clamp(28px,6vw,80px)}
+.s-dark{background:var(--dark);color:#f0efeb}
 
-/* ═══ TYPE — everything BIG ═══ */
-.mega{
-  font-family:'Syne',sans-serif;
-  font-size:clamp(3rem,8vw,6.5rem);font-weight:700;
-  line-height:1;letter-spacing:-.03em;max-width:900px;
+/* ═══ THE TYPE SYSTEM — BEAUTIFUL AND BIG ═══ */
+.display{
+  font-family:'Playfair Display',Georgia,serif;
+  font-size:clamp(3.2rem,9vw,7.5rem);
+  font-weight:400;line-height:.95;
+  letter-spacing:-.03em;max-width:950px;
 }
-.mega em{font-style:normal;font-weight:700;color:var(--blue)}
-.s-dark .mega em{color:#6ab8e0}
+.display em{font-style:italic;color:var(--accent)}
+.s-dark .display em{color:#5db8de}
 
-.big{
-  font-family:'Syne',sans-serif;
-  font-size:clamp(2rem,5vw,3.8rem);font-weight:600;
-  line-height:1.1;max-width:800px;
+.title{
+  font-family:'Playfair Display',Georgia,serif;
+  font-size:clamp(2.2rem,5.5vw,4.2rem);
+  font-weight:400;line-height:1.05;max-width:800px;
 }
-.big em{font-style:normal;font-weight:600;color:var(--blue)}
-.s-dark .big em{color:#6ab8e0}
+.title em{font-style:italic;color:var(--accent)}
+.s-dark .title em{color:#5db8de}
 
-.mid{
-  font-size:clamp(1.15rem,2.2vw,1.45rem);font-weight:300;
-  color:var(--ink2);line-height:1.8;max-width:540px;margin:0 auto;
+.body{
+  font-family:'Outfit',sans-serif;
+  font-size:clamp(1.15rem,2.2vw,1.4rem);
+  font-weight:300;color:var(--ink2);
+  line-height:1.9;max-width:540px;margin:0 auto;
 }
-.s-dark .mid{color:rgba(245,244,239,.55)}
+.s-dark .body{color:rgba(240,239,235,.5)}
 
-.ask{
-  font-family:'Familjen Grotesk',sans-serif;
-  font-size:clamp(1.6rem,3.5vw,2.8rem);font-weight:400;font-style:italic;
-  color:var(--ink2);max-width:620px;margin:0 auto;line-height:1.3;
+.question{
+  font-family:'Playfair Display',Georgia,serif;
+  font-size:clamp(1.8rem,4vw,3.2rem);
+  font-weight:400;font-style:italic;
+  color:var(--ink2);max-width:640px;margin:0 auto;line-height:1.25;
 }
-.s-dark .ask{color:rgba(245,244,239,.5)}
+.s-dark .question{color:rgba(240,239,235,.45)}
 
-.dim{color:var(--ink3)}.s-dark .dim{color:rgba(245,244,239,.3)}
+.dim{color:var(--ink3)}.s-dark .dim{color:rgba(240,239,235,.3)}
 
-/* ═══ REVEALS ═══ */
-.rv{opacity:0;transform:translateY(20px);transition:opacity .8s cubic-bezier(.16,1,.3,1),transform .8s cubic-bezier(.16,1,.3,1)}
+.rv{opacity:0;transform:translateY(20px);transition:opacity .9s cubic-bezier(.16,1,.3,1),transform .9s cubic-bezier(.16,1,.3,1)}
 .rv.v{opacity:1;transform:translateY(0)}
 .d1{transition-delay:.12s}.d2{transition-delay:.24s}.d3{transition-delay:.36s}.d4{transition-delay:.48s}
 
-/* ═══ HERO ═══ */
+/* ═══ HERO NUMBER ═══ */
 .hero-num{
-  font-family:'Space Grotesk',sans-serif;
-  font-size:clamp(6rem,18vw,14rem);font-weight:500;
-  line-height:.8;letter-spacing:-.05em;
-  color:var(--ink);
+  font-family:'Outfit',sans-serif;
+  font-size:clamp(6rem,18vw,15rem);font-weight:600;
+  line-height:.8;letter-spacing:-.05em;color:var(--ink);
 }
-.hero-unit{
-  font-family:'Space Grotesk',sans-serif;
-  font-size:clamp(1.1rem,2.2vw,1.6rem);font-weight:300;
-  color:var(--ink3);letter-spacing:.06em;text-transform:uppercase;
-  margin-top:16px;margin-bottom:48px;
+.hero-after{
+  font-family:'Outfit',sans-serif;
+  font-size:clamp(1.2rem,2.5vw,1.7rem);font-weight:300;
+  color:var(--ink3);letter-spacing:.04em;
+  margin-top:20px;margin-bottom:48px;
 }
 
-/* ═══ EMOTION PILLS ═══ */
-.pills{display:flex;gap:12px;flex-wrap:wrap;justify-content:center;margin-top:48px}
+/* ═══ PILLS ═══ */
+.pills{display:flex;gap:14px;flex-wrap:wrap;justify-content:center;margin-top:56px}
 .pill{
-  padding:16px 32px;background:var(--bg);
+  padding:18px 36px;background:var(--bg);
   border:1px solid var(--bg2);border-radius:100px;
-  font-family:'Familjen Grotesk',sans-serif;
-  font-size:clamp(1rem,1.8vw,1.3rem);font-style:italic;
-  color:var(--ink2);
+  font-family:'Playfair Display',Georgia,serif;
+  font-size:clamp(1.05rem,1.8vw,1.3rem);font-style:italic;
+  color:var(--ink2);transition:border-color .3s;
 }
+.pill:hover{border-color:var(--ink3)}
 
-/* ═══ COUNTER ANIM ═══ */
-.count-row{display:flex;gap:clamp(32px,6vw,80px);justify-content:center;flex-wrap:wrap;margin-top:60px}
-.count-item{text-align:center}
-.count-num{
-  font-family:'Space Grotesk',sans-serif;
-  font-size:clamp(2rem,4.5vw,3.4rem);font-weight:500;
-  display:block;line-height:1;
+/* ═══ STATS ═══ */
+.stats{display:flex;gap:clamp(36px,7vw,80px);justify-content:center;flex-wrap:wrap;margin-top:64px}
+.stat{text-align:center}
+.stat-num{
+  font-family:'Outfit',sans-serif;
+  font-size:clamp(1.8rem,4vw,2.8rem);font-weight:600;display:block;line-height:1;
 }
-.s-dark .count-num{color:var(--bg)}
-.count-label{font-size:clamp(.8rem,1.2vw,.95rem);color:var(--ink3);margin-top:10px;display:block}
-.s-dark .count-label{color:rgba(245,244,239,.3)}
+.stat-label{font-size:clamp(.8rem,1.2vw,1rem);color:var(--ink3);margin-top:10px;display:block;font-weight:300}
+.s-dark .stat-label{color:rgba(240,239,235,.3)}
 
-/* ═══ COMPARE VISUAL ═══ */
-.vs-row{
+/* ═══ VS ═══ */
+.vs{
   display:grid;grid-template-columns:1fr auto 1fr;gap:32px;
-  max-width:620px;width:100%;margin:60px auto 0;align-items:center;
+  max-width:640px;width:100%;margin:64px auto 0;align-items:center;
 }
-@media(max-width:540px){.vs-row{grid-template-columns:1fr;gap:20px}.vs-mid{display:none}}
-.vs-box{
-  background:var(--bg2);border-radius:12px;padding:40px 28px;text-align:center;
-  border:1px solid rgba(0,0,0,.04);
-}
-.vs-label{font-size:.85rem;color:var(--ink3);margin-bottom:16px}
-.vs-num{font-family:'Space Grotesk',sans-serif;font-size:clamp(2.4rem,5vw,3.6rem);font-weight:500;display:block;line-height:1;margin-bottom:12px}
-.vs-detail{font-size:.95rem;color:var(--ink3);line-height:1.6}
-.vs-mid{font-family:'Syne',sans-serif;font-size:1.3rem;font-style:italic;color:var(--ink3)}
+@media(max-width:540px){.vs{grid-template-columns:1fr;gap:20px}.vs-mid{display:none}}
+.vs-box{background:var(--bg2);border-radius:16px;padding:44px 28px;text-align:center}
+.vs-label{font-size:.95rem;color:var(--ink3);margin-bottom:16px;font-weight:300}
+.vs-num{font-family:'Outfit',sans-serif;font-size:clamp(2.6rem,6vw,4rem);font-weight:600;display:block;line-height:1;margin-bottom:14px}
+.vs-detail{font-size:1.05rem;color:var(--ink3);line-height:1.7;font-weight:300}
+.vs-mid{font-family:'Playfair Display',Georgia,serif;font-size:1.4rem;font-style:italic;color:var(--ink3)}
 
 /* ═══ ZERO ═══ */
 .zero{
-  font-family:'Space Grotesk',sans-serif;
-  font-size:clamp(10rem,32vw,24rem);font-weight:500;
-  line-height:.7;letter-spacing:-.06em;
-  color:rgba(245,244,239,.9);
+  font-family:'Outfit',sans-serif;
+  font-size:clamp(12rem,36vw,28rem);font-weight:600;
+  line-height:.65;letter-spacing:-.06em;
+  color:rgba(240,239,235,.85);
 }
-.zero-label{
-  font-family:'Syne',sans-serif;
-  font-size:clamp(1.5rem,3vw,2.6rem);font-style:italic;
-  color:rgba(245,244,239,.4);margin-top:16px;
+.zero-after{
+  font-family:'Playfair Display',Georgia,serif;
+  font-size:clamp(1.6rem,3.2vw,2.6rem);font-style:italic;
+  color:rgba(240,239,235,.35);margin-top:20px;
 }
 
 /* ═══ STEPS ═══ */
-.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;max-width:800px;width:100%;margin:60px auto 0;border-radius:12px;overflow:hidden}
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;max-width:840px;width:100%;margin:64px auto 0;border-radius:16px;overflow:hidden}
 @media(max-width:640px){.steps{grid-template-columns:1fr}}
-.step{background:var(--bg2);padding:48px 28px;text-align:center}
-.step-num{font-family:'Space Grotesk',sans-serif;font-size:.75rem;color:var(--blue);letter-spacing:.15em;margin-bottom:16px;display:block}
-.step-title{font-family:'Syne',sans-serif;font-size:1.4rem;margin-bottom:12px}
-.step-desc{font-size:1rem;color:var(--ink3);line-height:1.7}
+.step{background:var(--bg2);padding:52px 32px;text-align:center}
+.step-n{font-family:'Outfit',sans-serif;font-size:.85rem;color:var(--accent);font-weight:500;letter-spacing:.1em;margin-bottom:18px;display:block}
+.step-t{font-family:'Playfair Display',Georgia,serif;font-size:1.5rem;margin-bottom:14px}
+.step-d{font-size:1.05rem;color:var(--ink3);line-height:1.7;font-weight:300}
 
-/* ═══ PROOF GRID ═══ */
-.proof-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:2px;max-width:720px;width:100%;margin:48px auto 0;border-radius:12px;overflow:hidden}
-@media(max-width:640px){.proof-grid{grid-template-columns:repeat(2,1fr)}}
-.proof-cell{background:var(--bg);padding:32px 16px;text-align:center}
-.proof-num{font-family:'Space Grotesk',sans-serif;font-size:clamp(1.3rem,2.5vw,1.8rem);font-weight:500;display:block;margin-bottom:8px}
-.proof-label{font-size:.8rem;color:var(--ink3)}
+/* ═══ GRID ═══ */
+.g4{display:grid;grid-template-columns:repeat(4,1fr);gap:2px;max-width:800px;width:100%;margin:56px auto 0;border-radius:16px;overflow:hidden}
+@media(max-width:640px){.g4{grid-template-columns:repeat(2,1fr)}}
+.g4-cell{background:var(--bg);padding:36px 20px;text-align:center}
+.s-dark .g4-cell{background:rgba(255,255,255,.04)}
+.g4-num{font-family:'Outfit',sans-serif;font-size:clamp(1.4rem,3vw,2rem);font-weight:600;display:block;line-height:1;margin-bottom:10px}
+.s-dark .g4-num{color:#f0efeb}
+.g4-label{font-size:.85rem;color:var(--ink3);font-weight:300;line-height:1.5}
+.s-dark .g4-label{color:rgba(240,239,235,.3)}
 
 /* ═══ DEAL ═══ */
-.deal{display:grid;grid-template-columns:repeat(4,1fr);gap:2px;max-width:800px;width:100%;margin:48px auto 0;border-radius:12px;overflow:hidden}
+.deal{display:grid;grid-template-columns:repeat(4,1fr);gap:2px;max-width:840px;width:100%;margin:56px auto 0;border-radius:16px;overflow:hidden}
 @media(max-width:640px){.deal{grid-template-columns:repeat(2,1fr)}}
-.deal-cell{background:var(--bg2);padding:44px 20px;text-align:center}
-.deal-num{font-family:'Space Grotesk',sans-serif;font-size:clamp(2.2rem,5vw,3.2rem);font-weight:500;display:block;line-height:1;margin-bottom:14px}
-.deal-desc{font-size:1rem;color:var(--ink3);line-height:1.6}
+.deal-cell{background:var(--bg2);padding:48px 24px;text-align:center}
+.deal-num{font-family:'Outfit',sans-serif;font-size:clamp(2.4rem,5.5vw,3.6rem);font-weight:600;display:block;line-height:1;margin-bottom:16px}
+.deal-desc{font-size:1.05rem;color:var(--ink3);line-height:1.7;font-weight:300}
 
 /* ═══ CTA ═══ */
-.cta-btn{
-  display:inline-flex;align-items:center;gap:14px;
-  padding:22px 56px;background:var(--ink);color:var(--bg);
-  font-size:1.1rem;font-weight:500;border-radius:8px;
-  margin-top:56px;transition:all .3s;
+.cta{
+  display:inline-flex;align-items:center;gap:16px;
+  padding:24px 64px;background:var(--ink);color:var(--bg);
+  font-size:1.2rem;font-weight:500;border-radius:100px;
+  margin-top:60px;transition:all .3s;letter-spacing:.02em;
 }
-.cta-btn:hover{transform:translateY(-2px);box-shadow:0 16px 40px rgba(0,0,0,.12)}
-.cta-btn .arr{transition:transform .3s;font-size:1.2rem}
-.cta-btn:hover .arr{transform:translateX(5px)}
+.cta:hover{transform:translateY(-2px);box-shadow:0 20px 48px rgba(0,0,0,.12)}
+.cta .arr{transition:transform .3s;font-size:1.3rem}
+.cta:hover .arr{transform:translateX(6px)}
 .cap{
-  margin-top:32px;font-family:'Space Grotesk',sans-serif;
-  font-size:.75rem;letter-spacing:.2em;text-transform:uppercase;
-  color:var(--ink3);display:flex;align-items:center;gap:12px;justify-content:center;
+  margin-top:32px;font-family:'Outfit',sans-serif;
+  font-size:.85rem;letter-spacing:.15em;text-transform:uppercase;
+  color:var(--ink3);font-weight:400;
+  display:flex;align-items:center;gap:12px;justify-content:center;
 }
-.cap::before{content:'';width:8px;height:8px;border-radius:50%;background:var(--green);box-shadow:0 0 10px var(--green);animation:pulse 2s ease-in-out infinite}
-@keyframes pulse{0%,100%{opacity:.5}50%{opacity:1}}
+.cap::before{content:'';width:8px;height:8px;border-radius:50%;background:var(--green);box-shadow:0 0 12px var(--green);animation:pulse 2s ease-in-out infinite}
+@keyframes pulse{0%,100%{opacity:.4}50%{opacity:1}}
 
-/* ═══ LINE ═══ */
 .line{width:60px;height:1px;background:var(--bg2);margin:0 auto}
+.s-dark .line{background:rgba(255,255,255,.06)}
 
-/* ═══ FOOTER ═══ */
-footer{padding:56px 32px;text-align:center;border-top:1px solid var(--bg2)}
+footer{padding:64px 32px;text-align:center;border-top:1px solid var(--bg2)}
 .ft-links{display:flex;gap:28px;justify-content:center;margin-bottom:24px}
-.ft-links a{font-size:.85rem;color:var(--ink3);transition:color .2s}
+.ft-links a{font-size:.95rem;color:var(--ink3);font-weight:300;transition:color .2s}
 .ft-links a:hover{color:var(--ink)}
-.ft-legal{font-size:.7rem;color:var(--ink3);line-height:2;max-width:600px;margin:0 auto 16px}
-.ft-copy{font-size:.7rem;color:var(--ink3)}
+.ft-legal{font-size:.78rem;color:var(--ink3);line-height:2.2;max-width:600px;margin:0 auto 16px;font-weight:300}
+.ft-copy{font-size:.78rem;color:var(--ink3);font-weight:300}
 
 @media(max-width:480px){
   nav{padding:0 20px}
   .nav-r a:not(.nav-cta){display:none}
-  .s{padding:130px 24px 100px}
+  .s{padding:140px 24px 100px}
   .s-half{padding:100px 24px 80px}
+  .stats{gap:28px}
 }
-::-webkit-scrollbar{width:4px}
-::-webkit-scrollbar-track{background:var(--bg)}
-::-webkit-scrollbar-thumb{background:var(--bg2);border-radius:4px}
 </style>
 </head>
 <body>
@@ -227,83 +221,79 @@ footer{padding:56px 32px;text-align:center;border-top:1px solid var(--bg2)}
   </div>
 </nav>
 
-<!-- ticker removed -->
-
-<!-- 0. WHO WE ARE -->
-<section class="s hero" style="padding-top:160px">
-  <h1 class="mega rv">A machine that reads<br>the water <em>for you.</em></h1>
-  <p class="mid rv d1" style="margin-top:40px">For people who believe markets are abundant,<br>AI is smarter than emotion, and life is too short<br>to watch charts.</p>
-  <div class="line rv d2" style="margin:52px auto"></div>
-  <p class="mid dim rv d3">This isn't for everyone. That's the point.</p>
+<!-- WHO WE ARE -->
+<section class="s" style="padding-top:180px">
+  <h1 class="display rv">A machine that reads<br>the water <em>for you.</em></h1>
+  <p class="body rv d1" style="margin-top:48px">For people who see the abundance,<br>trust the math over the noise,<br>and would rather live than watch charts.</p>
+  <p class="body dim rv d2" style="margin-top:32px">This isn't for everyone. That's the point.</p>
 </section>
 
-<!-- 1. THE MONEY -->
+<!-- THE MONEY -->
 <section class="s" style="background:var(--bg2)">
   <div class="hero-num rv" id="counter">$7.5</div>
-  <div class="hero-unit rv d1">trillion flows through markets every day</div>
-  <p class="mid rv d2">Right now, trillions are moving through<br>stocks, crypto, bonds, currencies, commodities.</p>
+  <div class="hero-after rv d1">trillion flows through markets every day</div>
+  <p class="body rv d2">Stocks, crypto, bonds, currencies, commodities.<br>Right now, trillions are moving.</p>
 </section>
 
-<!-- 2. EMOTION -->
-<section class="s" style="background:var(--bg2)">
-  <h2 class="mega rv"><em>Emotion</em><br>moves most of it.</h2>
+<!-- EMOTION -->
+<section class="s">
+  <h2 class="display rv"><em>Emotion</em><br>moves most of it.</h2>
   <div class="pills rv d1">
     <div class="pill">Fear sells the bottom</div>
     <div class="pill">Hope buys the top</div>
     <div class="pill">Panic creates the crash</div>
     <div class="pill">Opinion moves the herd</div>
   </div>
-  <p class="ask rv d2" style="margin-top:56px">Every emotional dollar creates a wave.<br>What does every wave create?</p>
 </section>
 
 <!-- OPPORTUNITY -->
-<section class="s">
-  <h2 class="mega rv"><em>Opportunity.</em></h2>
-  <p class="mid rv d1" style="margin-top:40px">Every wave of emotion leaves money on the table.<br>Fear crashes prices below value. Hope inflates them above it.</p>
-  <p class="big rv d2" style="margin-top:48px;font-size:clamp(1.4rem,3vw,2.2rem)">The gap between what people <em>feel</em><br>and what the math <em>says</em><br>is where the money lives.</p>
-</section>
-
-<!-- 3. MACHINES WIN -->
 <section class="s" style="background:var(--bg2)">
-  <p class="ask rv">Can emotion outperform<br>a system that doesn't feel?</p>
-  <div class="line rv d1" style="margin:56px auto"></div>
-  <p class="mid rv d2">AI beats doctors at diagnosis. It drives cars.<br>It beats grandmasters without being taught the rules.</p>
-  <p class="big rv d3" style="margin-top:48px;font-size:clamp(1.4rem,3vw,2.2rem)">Markets are the largest pattern<br>recognition problem <em>on earth.</em></p>
+  <h2 class="display rv"><em>Opportunity.</em></h2>
+  <p class="body rv d1" style="margin-top:48px">The gap between what people feel<br>and what the math says.</p>
+  <p class="title rv d2" style="margin-top:56px">That gap is where<br>the money <em>lives.</em></p>
 </section>
 
-<!-- 4. 90% LOSE -->
-<section class="s" style="background:var(--bg2)">
-  <h2 class="mega rv">90% of traders<br><em>lose money.</em></h2>
-  <p class="ask rv d1" style="margin-top:48px">Where does it go?</p>
-  <p class="mid rv d2" style="margin-top:36px">From those who feel<br>to those who compute.</p>
-</section>
-
-<!-- 5. CAN'T FORCE IT -->
+<!-- MACHINES WIN -->
 <section class="s">
-  <h2 class="mega rv">The water doesn't care<br><em>what you think.</em></h2>
-  <p class="mid rv d1" style="margin-top:40px">You don't create waves. You don't predict them.<br>They form on their own.</p>
-  <p class="mid dim rv d2" style="margin-top:32px">But if you watch long enough,<br>you see them forming.</p>
+  <p class="question rv">Can emotion outperform<br>a system that doesn't feel?</p>
+  <div class="line rv d1" style="margin:60px auto"></div>
+  <p class="body rv d2">AI beats doctors. Drives cars.<br>Beats grandmasters without learning the rules.</p>
+  <p class="title rv d3" style="margin-top:56px">Markets are the largest<br>pattern recognition problem <em>on earth.</em></p>
 </section>
 
-<!-- 6. THE MACHINE — DARK -->
+<!-- 90% LOSE -->
+<section class="s" style="background:var(--bg2)">
+  <h2 class="display rv">90% of traders<br><em>lose money.</em></h2>
+  <p class="question rv d1" style="margin-top:52px">Where does it go?</p>
+  <p class="body rv d2" style="margin-top:40px">From those who feel<br>to those who compute.</p>
+</section>
+
+<!-- WATER -->
+<section class="s">
+  <h2 class="display rv">The water doesn't care<br><em>what you think.</em></h2>
+  <p class="body rv d1" style="margin-top:44px">You don't create waves.<br>You don't predict them.<br>They form on their own.</p>
+  <p class="body dim rv d2" style="margin-top:36px">But if you watch long enough,<br>you see them forming.</p>
+</section>
+
+<!-- THE MACHINE — DARK -->
 <section class="s s-dark" id="how">
-  <h2 class="mega rv">Read <em>every sea</em><br>at once.</h2>
-  <div class="count-row rv d1">
-    <div class="count-item"><span class="count-num">2.29M</span><span class="count-label">patterns scanned nightly</span></div>
-    <div class="count-item"><span class="count-num">3,792</span><span class="count-label">instruments watched</span></div>
-    <div class="count-item"><span class="count-num">11</span><span class="count-label">independent engines</span></div>
+  <h2 class="display rv">Read <em>every sea</em><br>at once.</h2>
+  <div class="stats rv d1">
+    <div class="stat"><span class="stat-num">2.29M</span><span class="stat-label">patterns scanned nightly</span></div>
+    <div class="stat"><span class="stat-num">3,792</span><span class="stat-label">instruments watched</span></div>
+    <div class="stat"><span class="stat-num">11</span><span class="stat-label">independent engines</span></div>
   </div>
-  <div class="count-row rv d2" style="margin-top:40px">
-    <div class="count-item"><span class="count-num" style="color:#6ab8e0">+2.8%</span><span class="count-label">MR engine &middot; COVID crash</span></div>
-    <div class="count-item"><span class="count-num" style="color:#6ab8e0">+7.3%</span><span class="count-label">Portfolio &middot; 2022 bear</span></div>
-    <div class="count-item"><span class="count-num" style="color:rgba(245,244,239,.25)">&minus;34%</span><span class="count-label">S&amp;P 500 &middot; same period</span></div>
+  <div class="stats rv d2" style="margin-top:44px">
+    <div class="stat"><span class="stat-num" style="color:#5db8de">+2.8%</span><span class="stat-label">MR engine &middot; COVID crash</span></div>
+    <div class="stat"><span class="stat-num" style="color:#5db8de">+7.3%</span><span class="stat-label">Portfolio &middot; 2022 bear</span></div>
+    <div class="stat"><span class="stat-num" style="color:rgba(240,239,235,.2)">&minus;34%</span><span class="stat-label">S&amp;P 500 &middot; same period</span></div>
   </div>
 </section>
 
-<!-- 7. COMPARE -->
+<!-- COMPARE -->
 <section class="s s-half">
-  <p class="ask rv">How much of your return pays for<br>people, offices, and opinions?</p>
-  <div class="vs-row rv d1">
+  <p class="question rv">How much of your return pays for<br>people, offices, and opinions?</p>
+  <div class="vs rv d1">
     <div class="vs-box">
       <div class="vs-label">Traditional</div>
       <span class="vs-num" style="color:var(--red)">2%</span>
@@ -312,50 +302,50 @@ footer{padding:56px 32px;text-align:center;border-top:1px solid var(--bg2)}
     <div class="vs-mid">vs</div>
     <div class="vs-box">
       <div class="vs-label">The machine</div>
-      <span class="vs-num" style="color:var(--blue)">0%</span>
+      <span class="vs-num" style="color:var(--accent)">0%</span>
       <div class="vs-detail">Zero employees.<br>You pay nothing unless you profit.</div>
     </div>
   </div>
 </section>
 
-<!-- THE ZERO — DARK -->
+<!-- ZERO — DARK -->
 <section class="s s-dark">
-  <div class="zero rv">0<span style="font-size:.5em">%</span></div>
-  <div class="zero-label rv d1">emotion in every trade.</div>
+  <div class="zero rv">0<span style="font-size:.45em">%</span></div>
+  <div class="zero-after rv d1">emotion in every trade.</div>
 </section>
 
 <!-- HOW IT WORKS -->
 <section class="s s-half">
-  <h2 class="big rv">Park your money.<br><em>The machine reads the water.</em></h2>
+  <h2 class="title rv">Park your money.<br><em>The machine reads the water.</em></h2>
   <div class="steps rv d1">
     <div class="step">
-      <span class="step-num">01</span>
-      <div class="step-title">Park</div>
-      <div class="step-desc">Your capital enters the vessel.<br>Founder's money alongside.</div>
+      <span class="step-n">01</span>
+      <div class="step-t">Park</div>
+      <div class="step-d">Your capital enters the vessel.<br>Founder's money alongside.</div>
     </div>
     <div class="step">
-      <span class="step-num">02</span>
-      <div class="step-title">It runs</div>
-      <div class="step-desc">11 engines scan every market.<br>Capital flows to the waves forming.</div>
+      <span class="step-n">02</span>
+      <div class="step-t">It runs</div>
+      <div class="step-d">11 engines scan every market.<br>Capital flows to the waves.</div>
     </div>
     <div class="step">
-      <span class="step-num">03</span>
-      <div class="step-title">Live your life</div>
-      <div class="step-desc">Quarterly payouts.<br>Full transparency. 24/7.</div>
+      <span class="step-n">03</span>
+      <div class="step-t">Live your life</div>
+      <div class="step-d">Quarterly payouts.<br>Full transparency. 24/7.</div>
     </div>
   </div>
 </section>
 
 <!-- PROOF -->
 <section class="s s-half" id="proof" style="background:var(--bg2)">
-  <h2 class="big rv">158 strategies tested.<br><em>40+ killed and published.</em></h2>
-  <div class="proof-grid rv d1">
-    <div class="proof-cell"><span class="proof-num">158</span><span class="proof-label">strategies tested</span></div>
-    <div class="proof-cell"><span class="proof-num">40+</span><span class="proof-label">killed &amp; published</span></div>
-    <div class="proof-cell"><span class="proof-num">98.9M</span><span class="proof-label">signal rows</span></div>
-    <div class="proof-cell"><span class="proof-num">16yr</span><span class="proof-label">walk-forward data</span></div>
+  <h2 class="title rv">158 strategies tested.<br><em>40+ killed and published.</em></h2>
+  <div class="g4 rv d1">
+    <div class="g4-cell"><span class="g4-num">158</span><span class="g4-label">strategies tested</span></div>
+    <div class="g4-cell"><span class="g4-num">40+</span><span class="g4-label">killed &amp; published</span></div>
+    <div class="g4-cell"><span class="g4-num">98.9M</span><span class="g4-label">signal rows</span></div>
+    <div class="g4-cell"><span class="g4-num">16yr</span><span class="g4-label">walk-forward data</span></div>
   </div>
-  <p class="ask rv d2" style="margin-top:48px">What does it say about a system<br>that publishes its own failures?</p>
+  <p class="question rv d2" style="margin-top:56px">What does it say about a system<br>that publishes its own failures?</p>
 </section>
 
 <!-- THE DEAL -->
@@ -363,15 +353,15 @@ footer{padding:56px 32px;text-align:center;border-top:1px solid var(--bg2)}
   <div class="deal rv">
     <div class="deal-cell"><span class="deal-num">0%</span><span class="deal-desc">You pay nothing<br>to park here</span></div>
     <div class="deal-cell"><span class="deal-num">20%</span><span class="deal-desc">Of profits. Quarterly.<br>Only when you win</span></div>
-    <div class="deal-cell"><span class="deal-num" style="font-size:clamp(1.1rem,2.2vw,1.5rem);color:var(--blue)">Limited</span><span class="deal-desc">Spots are filling.<br>Then the water fills.</span></div>
+    <div class="deal-cell"><span class="deal-num" style="font-size:clamp(1.2rem,2.5vw,1.7rem);color:var(--accent)">Limited</span><span class="deal-desc">Spots are filling.<br>Then the water fills.</span></div>
     <div class="deal-cell"><span class="deal-num">100%</span><span class="deal-desc">Founder's money<br>same vessel</span></div>
   </div>
 </section>
 
 <!-- THE DOOR -->
 <section class="s">
-  <h2 class="big rv">If you can read the water,<br><em>the door is open.</em></h2>
-  <a href="mailto:info@prism.fund" class="cta-btn rv d1">Get in <span class="arr">&rarr;</span></a>
+  <h2 class="title rv">If you can read the water,<br><em>the door is open.</em></h2>
+  <a href="mailto:info@prism.fund" class="cta rv d1">Get in <span class="arr">&rarr;</span></a>
   <div class="cap rv d2"><span>Spots filling now</span></div>
 </section>
 
@@ -388,7 +378,7 @@ footer{padding:56px 32px;text-align:center;border-top:1px solid var(--bg2)}
 <script>
 const ob=new IntersectionObserver(e=>{e.forEach(x=>{if(x.isIntersecting)x.target.classList.add('v')})},{threshold:.08,rootMargin:'0px 0px -40px 0px'});
 document.querySelectorAll('.rv').forEach(el=>ob.observe(el));
-(function(){const el=document.getElementById('counter');let d=false;new IntersectionObserver(e=>{if(e[0].isIntersecting&&!d){d=true;const end=7.5,dur=2000,t0=performance.now();(function t(now){const p=Math.min((now-t0)/dur,1);el.textContent='$'+(p*(2-p)*end).toFixed(1);if(p<1)requestAnimationFrame(t)})(t0)}},{threshold:.5}).observe(el)})();
+(function(){const el=document.getElementById('counter');let d=false;new IntersectionObserver(e=>{if(e[0].isIntersecting&&!d){d=true;const end=7.5,dur=2200,t0=performance.now();(function t(now){const p=Math.min((now-t0)/dur,1);el.textContent='$'+(p*(2-p)*end).toFixed(1);if(p<1)requestAnimationFrame(t)})(t0)}},{threshold:.5}).observe(el)})();
 let ly=0;const nv=document.querySelector('nav');
 window.addEventListener('scroll',()=>{const y=window.scrollY,h=y>300&&y>ly;nv.style.transform=h?'translateY(-100%)':'';ly=y},{passive:true});
 </script>
